@@ -5,6 +5,7 @@
   let initPromise = null;
   let mountedUserButton = false;
   let currentProfile = null;
+  let lastSignedInState = null;
 
   function loadScript(src, attributes = {}) {
     return new Promise((resolve, reject) => {
@@ -27,6 +28,10 @@
     if (!login || !user || !clerk) return;
 
     const signedIn = Boolean(clerk.isSignedIn);
+    if (lastSignedInState !== signedIn) {
+      lastSignedInState = signedIn;
+      document.dispatchEvent(new CustomEvent("heritage-auth-state", { detail: { signedIn } }));
+    }
     login.hidden = signedIn;
     user.hidden = !signedIn;
     if (activity) activity.hidden = !signedIn;
