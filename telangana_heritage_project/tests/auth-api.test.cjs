@@ -52,6 +52,10 @@ test("all protected endpoints reject requests without a bearer token",async()=>{
  const cases=[
   [me,"GET"],
   [stories,"POST",{}, {title:"A valid story",body:"A sufficiently long story body for the protected endpoint."}],
+  [stories,"GET",{resource:"memories"}],
+  [stories,"GET",{resource:"memories",id:"11111111-1111-4111-8111-111111111111"}],
+  [stories,"POST",{resource:"memories"},{imageDataUrl:"data:image/jpeg;base64,/9j/2Q=="}],
+  [stories,"DELETE",{resource:"memories",id:"11111111-1111-4111-8111-111111111111"}],
   [reports,"POST",{}, {destinationSlug:"charminar",issueType:"litter",description:"Waste needs attention near the visitor entrance."}],
   [trips,"GET"],
   [submissions,"GET"],
