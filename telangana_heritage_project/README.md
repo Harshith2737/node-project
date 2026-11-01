@@ -44,7 +44,7 @@ The backend uses in-memory storage for reports. Data is lost when the process re
 
 ## Demo limitations
 
-- The destination catalogue includes six curated examples with source links; coordinates are approximate discovery markers and must not be treated as official navigation directions.
+- The destination catalogue includes six curated examples with source links to Telangana Tourism, district administrations and UNESCO; coordinates are approximate discovery markers and must not be treated as official navigation directions.
 - The map uses Leaflet and OpenStreetMap standard tiles. Respect the OpenStreetMap Tile Usage Policy; do not bulk-fetch tiles or implement offline tile downloads.
 - The AI guide returns local sample responses; no AI service is connected.
 - Login is a visual demo; there is no authentication.
