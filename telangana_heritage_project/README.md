@@ -46,7 +46,7 @@ The backend uses in-memory storage for reports. Data is lost when the process re
 
 - The destination catalogue includes six curated examples with source links to Telangana Tourism, district administrations and UNESCO; coordinates are approximate discovery markers and must not be treated as official navigation directions.
 - The map uses Leaflet and OpenStreetMap standard tiles. Respect the OpenStreetMap Tile Usage Policy; do not bulk-fetch tiles or implement offline tile downloads.
-- The AI guide returns local sample responses; no AI service is connected.
+- The Telangana Guide searches the reviewed destination catalogue and links to official references. It is retrieval, not generative AI; no model provider is connected.
 - Clerk sign-in is implemented; it requires the connected Clerk application to be configured for the deployed domain.
 - Story submissions, heritage reports, saved trips and contributor requests are stored in Neon after the database migration is applied.
 - The static frontend currently uses its own local destination list and does not call the Express API.
@@ -92,4 +92,4 @@ Remove that temporary variable after use. Only an authorised administrator shoul
 
 Private APIs include `GET /api/v1/me`, `GET /api/v1/submissions`, trip create/list, story/report submissions, contributor requests, and moderator/admin review endpoints. Public story reads return only approved (`published`) records. All writes apply input limits and database-backed rate limits; moderation decisions create audit events in the same Neon batch.
 
-The AI guide remains sample-only, sustainability metrics are illustrative, and media uploads are not enabled. Apply the database migration and complete the Clerk sign-in/role checks on a protected Vercel preview before using the platform with real visitors.
+The source-linked guide search is enabled, but a generative AI service is not connected. Sustainability metrics remain illustrative, and private media uploads are not enabled. Apply the database migration and complete the Clerk sign-in/role checks on a protected Vercel preview before using the platform with real visitors.
