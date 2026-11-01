@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Telangana Heritage API
+  version: 1.0.0
+  description: Read-only API for the curated Telangana destination catalogue and service health.
+servers:
+  - url: https://{deployment-host}
+    variables:
+      deployment-host:
+        default: your-project.vercel.app
+paths:
+  /api/v1/health:
+    get:
+      summary: Check API health
+      operationId: getHealth
+      responses:
+        "200":
+          description: API is responding
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status, service, apiVersion, timestamp]
+                properties:
+                  status: { type: string, const: ok }
+                  service: { type: string }
+                  apiVersion: { type: string }
+                  timestamp: { type: string, format: date-time }
+        "405":
+          description: Method not allowed
+  /api/v1/destinations:
+    get:
+      summary: Search and filter destinations
+      operationId: listDestinations
+      parameters:
+        - in: query
+          name: q
+          schema: { type: string, maxLength: 80 }
+          description: Case-insensitive search across name, district, category and description.
+        - in: query
+          name: category
+          schema:
+            type: string
+            enum: [all, Heritage, Nature, Culture]
+      responses:
+        "200":
+          description: Filtered destination records
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [apiVersion, count, data]
+                properties:
+                  apiVersion: { type: string }
+                  count: { type: integer, minimum: 0 }
+                  data:
+                    type: array
+                    items: { $ref: "#/components/schemas/Destination" }
+        "400":
+          description: Invalid query value
+        "405":
+          description: Method not allowed
+  /api/v1/destinations/{slug}:
+    get:
+      summary: Get a destination by slug
+      operationId: getDestination
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
+            pattern: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      responses:
+        "200":
+          description: Destination record
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [apiVersion, data]
+                properties:
+                  apiVersion: { type: string }
+                  data: { $ref: "#/components/schemas/Destination" }
+        "400":
+          description: Invalid slug
+        "404":
+          description: Destination not found
+        "405":
+          description: Method not allowed
+components:
+  schemas:
+    Destination:
+      type: object
+      required:
+        - slug
+        - name
+        - district
+        - category
+        - description
+        - coordinates
+        - officialSourceUrl
+        - coordinateSourceUrl
+      properties:
+        slug: { type: string }
+        name: { type: string }
+        district: { type: string }
+        category: { type: string, enum: [Heritage, Nature, Culture] }
+        description: { type: string }
+        coordinates:
+          type: object
+          required: [latitude, longitude]
+          properties:
+            latitude: { type: number, minimum: -90, maximum: 90 }
+            longitude: { type: number, minimum: -180, maximum: 180 }
+        coordinateAccuracy: { type: string }
+        officialSourceUrl: { type: string, format: uri }
+        coordinateSourceUrl: { type: string, format: uri }
+        sourceNotes: { type: string }
+        sourceReviewedOn: { type: string, format: date }
