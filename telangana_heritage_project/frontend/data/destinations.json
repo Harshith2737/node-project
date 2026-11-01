@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "charminar",
+    "name": "Charminar",
+    "district": "Hyderabad",
+    "category": "Heritage",
+    "description": "Hyderabad landmark at the heart of the historic old city. Telangana Tourism identifies Charminar as a landmark built in 1591.",
+    "coordinates": {
+      "latitude": 17.361607,
+      "longitude": 78.474657
+    },
+    "coordinateAccuracy": "site",
+    "officialSourceUrl": "https://tourism.telangana.gov.in/",
+    "coordinateSourceUrl": "https://mapcarta.com/33394160",
+    "sourceNotes": "Coordinates are a mapped monument point; the official tourism portal is the source for destination context."
+  },
+  {
+    "slug": "golconda-fort",
+    "name": "Golconda Fort",
+    "district": "Hyderabad",
+    "category": "Heritage",
+    "description": "Historic fort complex in Hyderabad and part of the state's identified heritage-tourism circuit.",
+    "coordinates": {
+      "latitude": 17.383309,
+      "longitude": 78.401053
+    },
+    "coordinateAccuracy": "site",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://commons.wikimedia.org/wiki/File:Golconda_Fort_-_Map.jpg",
+    "sourceNotes": "The state tourism policy lists Golconda Fort in the Hyderabad–Rangareddy–Medchal heritage cluster. The coordinate is a mapped fort reference point."
+  },
+  {
+    "slug": "ramappa-temple",
+    "name": "Ramappa Temple",
+    "district": "Mulugu",
+    "category": "Heritage",
+    "description": "The Kakatiya Rudreshwara (Ramappa) Temple at Palampet is a UNESCO World Heritage Site, inscribed in 2021.",
+    "coordinates": {
+      "latitude": 18.259133,
+      "longitude": 79.943206
+    },
+    "coordinateAccuracy": "site",
+    "officialSourceUrl": "https://tourism.telangana.gov.in/page/ramappa",
+    "coordinateSourceUrl": "https://whc.unesco.org/en/list/1570/maps/",
+    "sourceNotes": "Coordinates are taken from the UNESCO World Heritage Centre map record."
+  },
+  {
+    "slug": "warangal-fort",
+    "name": "Warangal Fort",
+    "district": "Warangal",
+    "category": "Heritage",
+    "description": "Kakatiya-era fort precinct and one of the heritage destinations highlighted in Telangana's tourism planning.",
+    "coordinates": {
+      "latitude": 17.9572,
+      "longitude": 79.6144
+    },
+    "coordinateAccuracy": "site",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.kakatiya.info/sites/warangal-fort",
+    "sourceNotes": "Coordinates are a public mapped reference point for the fort precinct."
+  },
+  {
+    "slug": "kuntala-waterfalls",
+    "name": "Kuntala Waterfalls",
+    "district": "Nirmal",
+    "category": "Nature",
+    "description": "Waterfall on the Kadem river, about 64 km from Adilabad according to the district administration's visitor information.",
+    "coordinates": {
+      "latitude": 19.285,
+      "longitude": 78.503
+    },
+    "coordinateAccuracy": "site",
+    "officialSourceUrl": "https://adilabad.telangana.gov.in/tourist-place/kuntala-water-falls/",
+    "coordinateSourceUrl": "https://en.wikipedia.org/wiki/Kuntala_Waterfall",
+    "sourceNotes": "Coordinates are a public reference point. Confirm local access and seasonal conditions with district authorities before travel."
+  },
+  {
+    "slug": "bhoodan-pochampally",
+    "name": "Bhoodan Pochampally",
+    "district": "Yadadri Bhuvanagiri",
+    "category": "Culture",
+    "description": "Handloom destination associated with Pochampally Ikat weaving and included in Telangana's crafts-tourism planning.",
+    "coordinates": {
+      "latitude": 17.34855,
+      "longitude": 78.82086
+    },
+    "coordinateAccuracy": "town-centre",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://mapcarta.com/N5515818537",
+    "sourceNotes": "The marker is a town-centre reference, not a specific workshop or visitor entrance. Contact local operators for exact locations."
+  }
+]
