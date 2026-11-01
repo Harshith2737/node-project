@@ -10,7 +10,8 @@
     "check": "node scripts/check.js",
     "db:check": "node --env-file-if-exists=.env.local scripts/check-db.js",
     "db:migrate": "node --env-file-if-exists=.env.local scripts/migrate.js",
-    "admin:promote": "node --env-file-if-exists=.env.local scripts/promote-admin.js"
+    "admin:promote": "node --env-file-if-exists=.env.local scripts/promote-admin.js",
+    "build": "node scripts/build.js"
   },
   "dependencies": {
     "@clerk/backend": "3.26.5",
