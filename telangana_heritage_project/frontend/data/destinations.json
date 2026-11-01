@@ -13,7 +13,22 @@
     "officialSourceUrl": "https://www.tourism.telangana.gov.in/attractions/charminar",
     "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.361607&mlon=78.474657#map=17/17.361607/78.474657",
     "sourceNotes": "Official destination description from Telangana Tourism. Coordinate is an approximate map reference for the monument.",
-    "sourceReviewedOn": "2026-11-01"
+    "sourceReviewedOn": "2026-11-01",
+    "image": {
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/Charminar%2C_Hyderabad_%28cropped%29.jpg",
+      "imageAlt": "Charminar monument in Hyderabad, viewed from the front",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Charminar,_Hyderabad_(cropped).jpg",
+      "imageCredit": "Gopikrishna Narla · CC BY-SA 3.0",
+      "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/Charminar%2C_Hyderabad_%28cropped%29.jpg",
+    "imageAlt": "Charminar monument in Hyderabad, viewed from the front",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Charminar,_Hyderabad_(cropped).jpg",
+    "imageCredit": "Gopikrishna Narla · CC BY-SA 3.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "imageChanges": "No changes made to the original photograph.",
+    "circuit": "Telangana regional discovery",
+    "visitorTip": "Check current site guidance before travelling, respect local customs and take all waste with you."
   },
   {
     "slug": "golconda-fort",
@@ -29,7 +44,22 @@
     "officialSourceUrl": "https://www.tourism.telangana.gov.in/customized-musuems-forts",
     "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.383309&mlon=78.401053#map=17/17.383309/78.401053",
     "sourceNotes": "Official Telangana Tourism page lists Golconda Fort among its museums and forts. Coordinate is an approximate fort reference point.",
-    "sourceReviewedOn": "2026-11-01"
+    "sourceReviewedOn": "2026-11-01",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Golconda_Fort_-_005.jpg",
+      "imageAlt": "Historic stone ramparts and structures at Golconda Fort",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Golconda_Fort_-_005.jpg",
+      "imageCredit": "Oleg Yunakov · CC BY-SA 4.0",
+      "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Golconda_Fort_-_005.jpg",
+    "imageAlt": "Historic stone ramparts and structures at Golconda Fort",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Golconda_Fort_-_005.jpg",
+    "imageCredit": "Oleg Yunakov · CC BY-SA 4.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "imageChanges": "No changes made to the original photograph.",
+    "circuit": "Telangana regional discovery",
+    "visitorTip": "Check current site guidance before travelling, respect local customs and take all waste with you."
   },
   {
     "slug": "ramappa-temple",
@@ -45,7 +75,22 @@
     "officialSourceUrl": "https://whc.unesco.org/en/list/1570/",
     "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.259133&mlon=79.943206#map=17/18.259133/79.943206",
     "sourceNotes": "UNESCO World Heritage Centre is the primary heritage source. Coordinate is a mapped site reference; confirm visitor access locally.",
-    "sourceReviewedOn": "2026-11-01"
+    "sourceReviewedOn": "2026-11-01",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ramappa_temple%2C_telangana%2Cindia.jpg",
+      "imageAlt": "Carved stone architecture of the Ramappa Temple",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Ramappa_temple,_telangana,india.jpg",
+      "imageCredit": "Vallapudasu Srinu · CC BY-SA 4.0",
+      "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ramappa_temple%2C_telangana%2Cindia.jpg",
+    "imageAlt": "Carved stone architecture of the Ramappa Temple",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Ramappa_temple,_telangana,india.jpg",
+    "imageCredit": "Vallapudasu Srinu · CC BY-SA 4.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "imageChanges": "No changes made to the original photograph.",
+    "circuit": "Telangana regional discovery",
+    "visitorTip": "Check current site guidance before travelling, respect local customs and take all waste with you."
   },
   {
     "slug": "warangal-fort",
@@ -61,7 +106,22 @@
     "officialSourceUrl": "https://warangal.telangana.gov.in/tourist-place/warangal-fort/",
     "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.9572&mlon=79.6144#map=17/17.9572/79.6144",
     "sourceNotes": "Official Warangal district visitor page. Coordinate is an approximate fort precinct reference point.",
-    "sourceReviewedOn": "2026-11-01"
+    "sourceReviewedOn": "2026-11-01",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kakatiya_Kala_Toranam_also_called_Warangal_Gate_at_Warangal_Fort_Telangana.jpg",
+      "imageAlt": "Kakatiya Kala Toranam gateway at Warangal Fort",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Kakatiya_Kala_Toranam_also_called_Warangal_Gate_at_Warangal_Fort_Telangana.jpg",
+      "imageCredit": "Kavali Chandrakanth KCK · CC BY-SA 4.0",
+      "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kakatiya_Kala_Toranam_also_called_Warangal_Gate_at_Warangal_Fort_Telangana.jpg",
+    "imageAlt": "Kakatiya Kala Toranam gateway at Warangal Fort",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Kakatiya_Kala_Toranam_also_called_Warangal_Gate_at_Warangal_Fort_Telangana.jpg",
+    "imageCredit": "Kavali Chandrakanth KCK · CC BY-SA 4.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "imageChanges": "No changes made to the original photograph.",
+    "circuit": "Telangana regional discovery",
+    "visitorTip": "Check current site guidance before travelling, respect local customs and take all waste with you."
   },
   {
     "slug": "kuntala-waterfalls",
@@ -77,7 +137,22 @@
     "officialSourceUrl": "https://adilabad.telangana.gov.in/tourist-place/kuntala-water-falls/",
     "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=19.285&mlon=78.503#map=17/19.285/78.503",
     "sourceNotes": "Official Adilabad district visitor page. Coordinate is an approximate waterfall reference; confirm seasonal access and local conditions.",
-    "sourceReviewedOn": "2026-11-01"
+    "sourceReviewedOn": "2026-11-01",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuntala_waterfall.jpg",
+      "imageAlt": "Kuntala Waterfall in Nirmal district",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Kuntala_waterfall.jpg",
+      "imageCredit": "Shivaranisiddula · CC BY 4.0",
+      "imageLicenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuntala_waterfall.jpg",
+    "imageAlt": "Kuntala Waterfall in Nirmal district",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Kuntala_waterfall.jpg",
+    "imageCredit": "Shivaranisiddula · CC BY 4.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "imageChanges": "No changes made to the original photograph.",
+    "circuit": "Telangana regional discovery",
+    "visitorTip": "Check current site guidance before travelling, respect local customs and take all waste with you."
   },
   {
     "slug": "bhoodan-pochampally",
@@ -93,6 +168,757 @@
     "officialSourceUrl": "https://tourism.telangana.gov.in/page/arts-crafts",
     "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.34855&mlon=78.82086#map=17/17.34855/78.82086",
     "sourceNotes": "Official Telangana Tourism arts and crafts page. Marker is a town-centre reference, not a specific workshop or visitor entrance.",
-    "sourceReviewedOn": "2026-11-01"
+    "sourceReviewedOn": "2026-11-01",
+    "circuit": "Telangana regional discovery",
+    "visitorTip": "Check current site guidance before travelling, respect local customs and take all waste with you."
+  },
+  {
+    "slug": "thousand-pillar-temple",
+    "name": "Thousand Pillar Temple",
+    "district": "Hanamkonda",
+    "category": "Heritage",
+    "description": "A celebrated Kakatiya-era temple known for its carved pillars, sculptural details and distinctive star-shaped platform.",
+    "coordinates": {
+      "latitude": 17.9938,
+      "longitude": 79.5881
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.9938&mlon=79.5881#map=14/17.9938/79.5881",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Walk around the temple respectfully and follow conservation-area restrictions.",
+    "circuit": "Kakatiya heritage circuit",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Thousand_pillar_temple_Hanamkonda.jpg",
+      "imageAlt": "The Thousand Pillar Temple at Hanamkonda",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Thousand_pillar_temple_Hanamkonda.jpg",
+      "imageCredit": "Adbh266 · CC BY-SA 4.0",
+      "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Thousand_pillar_temple_Hanamkonda.jpg",
+    "imageAlt": "The Thousand Pillar Temple at Hanamkonda",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Thousand_pillar_temple_Hanamkonda.jpg",
+    "imageCredit": "Adbh266 · CC BY-SA 4.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "imageChanges": "No changes made to the original photograph."
+  },
+  {
+    "slug": "chowmahalla-palace",
+    "name": "Chowmahalla Palace",
+    "district": "Hyderabad",
+    "category": "Heritage",
+    "description": "A historic palace complex associated with the Nizams, with courtyards, halls and collections that tell the story of Hyderabad.",
+    "coordinates": {
+      "latitude": 17.3578,
+      "longitude": 78.4717
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.3578&mlon=78.4717#map=14/17.3578/78.4717",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Allow time for the palace grounds and check the official visitor page for current entry information.",
+    "circuit": "Charminar heritage cluster",
+    "image": {
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Chowmahalla_Palace_Front_View.jpg",
+      "imageAlt": "Front view of Chowmahalla Palace in Hyderabad",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Chowmahalla_Palace_Front_View.jpg",
+      "imageCredit": "Bhaskar Roy (Teertho) · CC BY-SA 4.0",
+      "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Chowmahalla_Palace_Front_View.jpg",
+    "imageAlt": "Front view of Chowmahalla Palace in Hyderabad",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Chowmahalla_Palace_Front_View.jpg",
+    "imageCredit": "Bhaskar Roy (Teertho) · CC BY-SA 4.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "imageChanges": "No changes made to the original photograph."
+  },
+  {
+    "slug": "laknavaram-lake",
+    "name": "Laknavaram Lake",
+    "district": "Mulugu",
+    "category": "Nature",
+    "description": "A forest-fringed lake known for its islands and hanging bridge, included in Telangana’s Ramappa tourism circuit.",
+    "coordinates": {
+      "latitude": 18.2504,
+      "longitude": 80.0508
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.2504&mlon=80.0508#map=14/18.2504/80.0508",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Stay on designated paths and follow local guidance around the water and bridge.",
+    "circuit": "Ramappa nature circuit",
+    "image": {
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Laknavaram_hanging_bridge_on_Laknavaram_lake%2C_constructed_by_the_Telangana_State_Tourism_Development_14.jpg",
+      "imageAlt": "Hanging bridge across Laknavaram Lake",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Laknavaram_hanging_bridge_on_Laknavaram_lake,_constructed_by_the_Telangana_State_Tourism_Development_12.jpg",
+      "imageCredit": "Pinakpani · CC BY 4.0",
+      "imageLicenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Laknavaram_hanging_bridge_on_Laknavaram_lake%2C_constructed_by_the_Telangana_State_Tourism_Development_14.jpg",
+    "imageAlt": "Hanging bridge across Laknavaram Lake",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Laknavaram_hanging_bridge_on_Laknavaram_lake,_constructed_by_the_Telangana_State_Tourism_Development_12.jpg",
+    "imageCredit": "Pinakpani · CC BY 4.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "imageChanges": "No changes made to the original photograph."
+  },
+  {
+    "slug": "bogatha-waterfalls",
+    "name": "Bogatha Waterfalls",
+    "district": "Mulugu",
+    "category": "Nature",
+    "description": "A broad seasonal waterfall surrounded by forested terrain and included in the Ramappa tourism circuit.",
+    "coordinates": {
+      "latitude": 18.124,
+      "longitude": 80.304
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.124&mlon=80.304#map=14/18.124/80.304",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Water flow and access vary by season; avoid entering fast-moving water.",
+    "circuit": "Ramappa nature circuit",
+    "image": {
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Bogatha_Waterfall_top_view.jpg/1280px-Bogatha_Waterfall_top_view.jpg",
+      "imageAlt": "Water flowing over the rocky ledge at Bogatha Waterfalls",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Bogatha_Waterfall_top_view.jpg",
+      "imageCredit": "Manikanta1973 · CC BY-SA 4.0",
+      "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Bogatha_Waterfall_top_view.jpg/1280px-Bogatha_Waterfall_top_view.jpg",
+    "imageAlt": "Water flowing over the rocky ledge at Bogatha Waterfalls",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Bogatha_Waterfall_top_view.jpg",
+    "imageCredit": "Manikanta1973 · CC BY-SA 4.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "imageChanges": "No changes made to the original photograph."
+  },
+  {
+    "slug": "bhongir-fort",
+    "name": "Bhongir Fort",
+    "district": "Yadadri Bhuvanagiri",
+    "category": "Heritage",
+    "description": "A hilltop fort rising above the surrounding landscape and forming part of the Yadadri tourism cluster.",
+    "coordinates": {
+      "latitude": 17.5147,
+      "longitude": 78.8926
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.5147&mlon=78.8926#map=14/17.5147/78.8926",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Wear suitable footwear and check local access conditions before climbing.",
+    "circuit": "Yadadri heritage circuit"
+  },
+  {
+    "slug": "basara-gnana-saraswati-temple",
+    "name": "Basara Gnana Saraswati Temple",
+    "district": "Nirmal",
+    "category": "Culture",
+    "description": "A well-known temple destination on the banks of the Godavari, included in Telangana’s Basara tourism circuit.",
+    "coordinates": {
+      "latitude": 18.8782,
+      "longitude": 77.9559
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.8782&mlon=77.9559#map=14/18.8782/77.9559",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Dress respectfully and follow temple instructions, especially during busy periods.",
+    "circuit": "Basara spiritual circuit",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Basara_Saraswathi_Temple_India.jpg",
+      "imageAlt": "Basara Gnana Saraswati Temple in Nirmal district",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Basara_Saraswathi_Temple_India.jpg",
+      "imageCredit": "Kiran Kollepalli · CC BY 2.0",
+      "imageLicenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Basara_Saraswathi_Temple_India.jpg",
+    "imageAlt": "Basara Gnana Saraswati Temple in Nirmal district",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Basara_Saraswathi_Temple_India.jpg",
+    "imageCredit": "Kiran Kollepalli · CC BY 2.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "imageChanges": "No changes made to the original photograph."
+  },
+  {
+    "slug": "vemulawada-temple",
+    "name": "Sri Raja Rajeshwara Temple, Vemulawada",
+    "district": "Rajanna Sircilla",
+    "category": "Culture",
+    "description": "A major Shaiva pilgrimage destination and anchor of the Vemulawada circuit, which also includes Kondagattu, Kotilingala and Dharmapuri.",
+    "coordinates": {
+      "latitude": 18.4651,
+      "longitude": 78.8689
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.4651&mlon=78.8689#map=14/18.4651/78.8689",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Plan extra time during festival periods and follow official temple guidance.",
+    "circuit": "Vemulawada spiritual circuit"
+  },
+  {
+    "slug": "yadadri-temple",
+    "name": "Yadadri Lakshmi Narasimha Temple",
+    "district": "Yadadri Bhuvanagiri",
+    "category": "Culture",
+    "description": "A major hill temple destination in the Yadadri cluster, with nearby heritage visits including Bhongir Fort.",
+    "coordinates": {
+      "latitude": 17.5893,
+      "longitude": 78.943
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.5893&mlon=78.943#map=14/17.5893/78.943",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Check current temple access and visitor rules before setting out.",
+    "circuit": "Yadadri spiritual circuit"
+  },
+  {
+    "slug": "bhadrachalam-temple",
+    "name": "Sri Sita Ramachandra Swamy Temple",
+    "district": "Bhadradri Kothagudem",
+    "category": "Culture",
+    "description": "A prominent Godavari-side pilgrimage destination and centrepiece of a wider Bhadrachalam circuit.",
+    "coordinates": {
+      "latitude": 17.6688,
+      "longitude": 80.8936
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.6688&mlon=80.8936#map=14/17.6688/80.8936",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Respect worship areas and follow local crowd-management guidance.",
+    "circuit": "Bhadrachalam spiritual circuit"
+  },
+  {
+    "slug": "medak-cathedral",
+    "name": "Medak Cathedral",
+    "district": "Medak",
+    "category": "Heritage",
+    "description": "A landmark church in Medak, paired in the state tourism policy with Medak Fort and nearby nature destinations.",
+    "coordinates": {
+      "latitude": 18.045,
+      "longitude": 78.263
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.045&mlon=78.263#map=14/18.045/78.263",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Observe quiet areas and any photography restrictions during services.",
+    "circuit": "Medak heritage circuit"
+  },
+  {
+    "slug": "ananthagiri-hills",
+    "name": "Ananthagiri Hills",
+    "district": "Vikarabad",
+    "category": "Nature",
+    "description": "A forested hill landscape near Vikarabad, included in Telangana’s eco and wellness tourism circuit.",
+    "coordinates": {
+      "latitude": 17.3346,
+      "longitude": 77.897
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.3346&mlon=77.897#map=14/17.3346/77.897",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Use marked trails, carry water and leave the forest undisturbed.",
+    "circuit": "Vikarabad nature circuit"
+  },
+  {
+    "slug": "pakhal-lake",
+    "name": "Pakhal Lake",
+    "district": "Warangal",
+    "category": "Nature",
+    "description": "A historic reservoir landscape included in the Warangal tourism circuit, with nature and wildlife experiences nearby.",
+    "coordinates": {
+      "latitude": 17.982,
+      "longitude": 79.98
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.982&mlon=79.98#map=14/17.982/79.98",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Keep a respectful distance from wildlife and avoid littering near the water.",
+    "circuit": "Warangal nature circuit"
+  },
+  {
+    "slug": "medaram-sammakka-saralamma",
+    "name": "Medaram Sammakka-Saralamma Shrine",
+    "district": "Mulugu",
+    "category": "Culture",
+    "description": "A major tribal pilgrimage destination in the Mulugu region and part of the Ramappa tourism circuit.",
+    "coordinates": {
+      "latitude": 18.3495,
+      "longitude": 80.106
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.3495&mlon=80.106#map=14/18.3495/80.106",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Festival crowd levels and local arrangements vary; follow official advisories.",
+    "circuit": "Ramappa and tribal culture circuit"
+  },
+  {
+    "slug": "pochampally-ikat-village",
+    "name": "Pochampally Ikat Weaving Village",
+    "district": "Yadadri Bhuvanagiri",
+    "category": "Culture",
+    "description": "A living handloom destination associated with Pochampally Ikat and community craft experiences.",
+    "coordinates": {
+      "latitude": 17.338,
+      "longitude": 78.888
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://tourism.telangana.gov.in/all-destinations",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.338&mlon=78.888#map=14/17.338/78.888",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Buy directly from local weavers where possible and ask before photographing people at work.",
+    "circuit": "Pochampally craft circuit"
+  },
+  {
+    "slug": "kaleshwaram-temple",
+    "name": "Kaleshwaram Temple",
+    "district": "Jayashankar Bhupalpally",
+    "category": "Culture",
+    "description": "A spiritual destination on the Godavari system and anchor of a wider circuit that includes Shivaram Sanctuary and Gandhari Fort.",
+    "coordinates": {
+      "latitude": 18.82,
+      "longitude": 79.92
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.82&mlon=79.92#map=14/18.82/79.92",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Check local travel conditions and temple guidance before visiting.",
+    "circuit": "Kaleshwaram spiritual circuit"
+  },
+  {
+    "slug": "devarakonda-fort",
+    "name": "Devarakonda Fort",
+    "district": "Nalgonda",
+    "category": "Heritage",
+    "description": "A historic hill fort included in the Nalgonda heritage circuit, with views across the surrounding rocky landscape.",
+    "coordinates": {
+      "latitude": 16.691,
+      "longitude": 79.468
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=16.691&mlon=79.468#map=14/16.691/79.468",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Use caution on uneven terrain and avoid climbing closed or unstable structures.",
+    "circuit": "Nalgonda heritage circuit"
+  },
+  {
+    "slug": "elgandal-fort",
+    "name": "Elgandal Fort",
+    "district": "Karimnagar",
+    "category": "Heritage",
+    "description": "A historic fort near Karimnagar that forms part of a regional circuit with Manthani temples and Ramagiri Fort.",
+    "coordinates": {
+      "latitude": 18.47,
+      "longitude": 79.14
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.47&mlon=79.14#map=14/18.47/79.14",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Respect protected structures and do not climb on fragile masonry.",
+    "circuit": "Karimnagar heritage circuit"
+  },
+  {
+    "slug": "alampur-jogulamba-temple",
+    "name": "Jogulamba Temple, Alampur",
+    "district": "Jogulamba Gadwal",
+    "category": "Culture",
+    "description": "A major Shakti Peetha destination in the Alampur–Somasila circuit, alongside historic temples and river landscapes.",
+    "coordinates": {
+      "latitude": 15.879,
+      "longitude": 78.134
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=15.879&mlon=78.134#map=14/15.879/78.134",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Follow temple visitor guidance and respect active worship spaces.",
+    "circuit": "Alampur–Somasila circuit"
+  },
+  {
+    "slug": "nagarjuna-sagar-buddhist-heritage",
+    "name": "Buddhavanam and Nagarjuna Sagar",
+    "district": "Nalgonda",
+    "category": "Heritage",
+    "description": "A Buddhist heritage and reservoir destination included in Telangana’s Buddhist circuit and Nagarjuna Sagar tourism area.",
+    "coordinates": {
+      "latitude": 16.574,
+      "longitude": 79.312
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=16.574&mlon=79.312#map=14/16.574/79.312",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Check site access conditions and avoid disturbing archaeological remains.",
+    "circuit": "Buddhist heritage circuit"
+  },
+  {
+    "slug": "kondagattu-temple",
+    "name": "Kondagattu Anjaneya Swamy Temple",
+    "district": "Jagtial",
+    "category": "Culture",
+    "description": "A temple destination in the Vemulawada regional circuit, alongside Kotilingala and Dharmapuri.",
+    "coordinates": {
+      "latitude": 18.629,
+      "longitude": 78.885
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.629&mlon=78.885#map=14/18.629/78.885",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Dress respectfully and follow the temple’s local visitor instructions.",
+    "circuit": "Vemulawada regional circuit"
+  },
+  {
+    "slug": "manjeera-wildlife-sanctuary",
+    "name": "Manjeera Wildlife Sanctuary",
+    "district": "Sangareddy",
+    "category": "Nature",
+    "description": "A wetland and riverine habitat included in Telangana’s Medak nature circuit.",
+    "coordinates": {
+      "latitude": 17.85,
+      "longitude": 78.12
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.85&mlon=78.12#map=14/17.85/78.12",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Keep noise low, do not feed wildlife and follow site-specific visitor rules.",
+    "circuit": "Medak nature circuit"
+  },
+  {
+    "slug": "eturnagaram-wildlife-sanctuary",
+    "name": "Eturnagaram Wildlife Sanctuary",
+    "district": "Mulugu",
+    "category": "Nature",
+    "description": "A protected forest landscape included in the Ramappa tourism circuit with nearby falls, lake and heritage destinations.",
+    "coordinates": {
+      "latitude": 18.112,
+      "longitude": 80.3
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.112&mlon=80.3#map=14/18.112/80.3",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Wildlife viewing is never guaranteed; remain in permitted visitor areas.",
+    "circuit": "Ramappa nature circuit"
+  },
+  {
+    "slug": "edupayala-temple",
+    "name": "Edupayala Vana Durga Bhavani Temple",
+    "district": "Medak",
+    "category": "Culture",
+    "description": "A temple destination in the Medak regional circuit, paired with forts, reservoirs and forest landscapes.",
+    "coordinates": {
+      "latitude": 18.048,
+      "longitude": 78.289
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.048&mlon=78.289#map=14/18.048/78.289",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Check local visitor arrangements during festivals and seasonal gatherings.",
+    "circuit": "Medak culture circuit"
+  },
+  {
+    "slug": "singur-dam",
+    "name": "Singur Reservoir",
+    "district": "Sangareddy",
+    "category": "Nature",
+    "description": "A reservoir destination linked with the Medak and Manjeera regional nature circuit.",
+    "coordinates": {
+      "latitude": 17.721,
+      "longitude": 78.137
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.721&mlon=78.137#map=14/17.721/78.137",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Respect water-safety boundaries and do not enter restricted dam infrastructure.",
+    "circuit": "Medak nature circuit"
+  },
+  {
+    "slug": "kotpally-reservoir",
+    "name": "Kotpally Reservoir",
+    "district": "Vikarabad",
+    "category": "Nature",
+    "description": "A reservoir landscape included in the Vikarabad eco-tourism circuit with Ananthagiri Hills and surrounding rural destinations.",
+    "coordinates": {
+      "latitude": 17.31,
+      "longitude": 77.87
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.31&mlon=77.87#map=14/17.31/77.87",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Confirm local access and permitted activities; respect water-safety boundaries.",
+    "circuit": "Vikarabad nature circuit"
+  },
+  {
+    "slug": "qutb-shahi-tombs",
+    "name": "Qutb Shahi Tombs",
+    "district": "Hyderabad",
+    "category": "Heritage",
+    "description": "A royal necropolis with domed mausoleums and landscaped grounds, included in the Hyderabad–Rangareddy heritage cluster.",
+    "coordinates": {
+      "latitude": 17.3948,
+      "longitude": 78.3966
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.3948&mlon=78.3966#map=14/17.3948/78.3966",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Respect protected structures and observe any photography or conservation rules.",
+    "circuit": "Hyderabad Deccan heritage trail"
+  },
+  {
+    "slug": "salar-jung-museum",
+    "name": "Salar Jung Museum",
+    "district": "Hyderabad",
+    "category": "Heritage",
+    "description": "A major museum on the Musi riverfront with collections spanning art, decorative objects and historical material.",
+    "coordinates": {
+      "latitude": 17.3714,
+      "longitude": 78.4804
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.3714&mlon=78.4804#map=14/17.3714/78.4804",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Check the museum’s official visitor page for current entry and gallery information.",
+    "circuit": "Charminar heritage cluster"
+  },
+  {
+    "slug": "mecca-masjid",
+    "name": "Mecca Masjid",
+    "district": "Hyderabad",
+    "category": "Culture",
+    "description": "A historic mosque near Charminar and part of the old-city heritage landscape.",
+    "coordinates": {
+      "latitude": 17.3603,
+      "longitude": 78.4736
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.3603&mlon=78.4736#map=14/17.3603/78.4736",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Dress respectfully and avoid disrupting worship or local activities.",
+    "circuit": "Charminar heritage cluster"
+  },
+  {
+    "slug": "hussain-sagar-buddha-statue",
+    "name": "Hussain Sagar and Buddha Statue",
+    "district": "Hyderabad",
+    "category": "Nature",
+    "description": "A large urban lake and landmark waterfront area within Hyderabad’s Buddha Purnima tourism precinct.",
+    "coordinates": {
+      "latitude": 17.4239,
+      "longitude": 78.4738
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.4239&mlon=78.4738#map=14/17.4239/78.4738",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Use public promenades and follow local boating, water-edge and event advisories.",
+    "circuit": "Hyderabad waterfront trail"
+  },
+  {
+    "slug": "shilparamam",
+    "name": "Shilparamam Arts and Crafts Village",
+    "district": "Hyderabad",
+    "category": "Culture",
+    "description": "A cultural village showcasing regional crafts, handloom traditions and artisan-focused events.",
+    "coordinates": {
+      "latitude": 17.4524,
+      "longitude": 78.3803
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.4524&mlon=78.3803#map=14/17.4524/78.3803",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Support artisan stalls directly and ask before photographing makers or performances.",
+    "circuit": "Hyderabad arts and crafts trail"
+  },
+  {
+    "slug": "statue-of-equality",
+    "name": "Statue of Equality",
+    "district": "Rangareddy",
+    "category": "Culture",
+    "description": "A large cultural and spiritual complex at Muchintal, included in Telangana’s official destination directory.",
+    "coordinates": {
+      "latitude": 17.1647,
+      "longitude": 78.2804
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://tourism.telangana.gov.in/all-destinations",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.1647&mlon=78.2804#map=14/17.1647/78.2804",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Check official access, dress and visitor rules before travelling.",
+    "circuit": "Hyderabad–Rangareddy circuit"
+  },
+  {
+    "slug": "taramati-baradari",
+    "name": "Taramati Baradari",
+    "district": "Hyderabad",
+    "category": "Heritage",
+    "description": "A historic pavilion associated with the Golconda heritage landscape and listed in the Hyderabad–Rangareddy circuit.",
+    "coordinates": {
+      "latitude": 17.3782,
+      "longitude": 78.3766
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.3782&mlon=78.3766#map=14/17.3782/78.3766",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Confirm access and any event-related restrictions in advance.",
+    "circuit": "Hyderabad Deccan heritage trail"
+  },
+  {
+    "slug": "keesaragutta-temple",
+    "name": "Keesaragutta Temple",
+    "district": "Medchal Malkajgiri",
+    "category": "Culture",
+    "description": "A hilltop temple destination included in Telangana’s Hyderabad–Rangareddy tourism circuit.",
+    "coordinates": {
+      "latitude": 17.5713,
+      "longitude": 78.589
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.5713&mlon=78.589#map=14/17.5713/78.589",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Follow temple guidance and take care on approach roads and steps.",
+    "circuit": "Hyderabad–Rangareddy spiritual circuit"
+  },
+  {
+    "slug": "pochera-waterfalls",
+    "name": "Pochera Waterfalls",
+    "district": "Nirmal",
+    "category": "Nature",
+    "description": "A waterfall destination in the Adilabad region and part of Telangana’s waterfalls circuit.",
+    "coordinates": {
+      "latitude": 19.286,
+      "longitude": 78.5008
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=19.286&mlon=78.5008#map=14/19.286/78.5008",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Water conditions and access can change seasonally; never enter fast-moving water.",
+    "circuit": "Adilabad waterfalls circuit"
+  },
+  {
+    "slug": "amrabad-tiger-reserve",
+    "name": "Amrabad Tiger Reserve landscape",
+    "district": "Nagarkurnool",
+    "category": "Nature",
+    "description": "A protected forest landscape in the Nallamala circuit, with eco-tourism destinations subject to forest-department rules.",
+    "coordinates": {
+      "latitude": 16.24,
+      "longitude": 78.72
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=16.24&mlon=78.72#map=14/16.24/78.72",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Follow forest-department advisories and remain only in authorised visitor areas.",
+    "circuit": "Nallamala eco and wellness circuit"
+  },
+  {
+    "slug": "kinnerasani-wildlife-sanctuary",
+    "name": "Kinnerasani Wildlife Sanctuary",
+    "district": "Bhadradri Kothagudem",
+    "category": "Nature",
+    "description": "A forest-and-reservoir landscape included in the Bhadrachalam tourism circuit.",
+    "coordinates": {
+      "latitude": 17.665,
+      "longitude": 80.855
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.665&mlon=80.855#map=14/17.665/80.855",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Follow protected-area rules and do not feed, approach or disturb wildlife.",
+    "circuit": "Bhadrachalam nature circuit"
+  },
+  {
+    "slug": "cheriyal-scroll-painting-village",
+    "name": "Cheriyal Scroll Painting Village",
+    "district": "Siddipet",
+    "category": "Culture",
+    "description": "A living craft destination associated with Cheriyal narrative scroll painting and the Palakurthy regional craft circuit.",
+    "coordinates": {
+      "latitude": 17.915,
+      "longitude": 79.092
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.915&mlon=79.092#map=14/17.915/79.092",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Purchase directly from artists where possible and ask before photographing their work.",
+    "circuit": "Palakurthy and craft circuit"
+  },
+  {
+    "slug": "pembarthi-metal-craft-village",
+    "name": "Pembarthi Metal Craft Village",
+    "district": "Jangaon",
+    "category": "Culture",
+    "description": "A traditional metal-craft destination included in Telangana’s Palakurthy and craft tourism circuit.",
+    "coordinates": {
+      "latitude": 17.806,
+      "longitude": 79.105
+    },
+    "coordinateAccuracy": "approximate-area-reference",
+    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.806&mlon=79.105#map=14/17.806/79.105",
+    "sourceNotes": "Included in or aligned with the destination clusters in the Telangana Tourism Policy 2025–2030 and official Telangana tourism directory. Map pin is an approximate area reference, not a surveyed site boundary.",
+    "sourceReviewedOn": "2026-11-01",
+    "visitorTip": "Support local craft makers and ask before photographing workshops.",
+    "circuit": "Palakurthy and craft circuit"
   }
 ]

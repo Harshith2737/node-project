@@ -25,13 +25,13 @@ function scoreDestination(destination, phrase, queryTokens) {
   const district = normalize(destination.district);
   const category = normalize(destination.category);
   const description = normalize(destination.description);
-  const notes = normalize(destination.sourceNotes);
+  const circuit = normalize(destination.circuit);
 
   const nameTokens = new Set(tokens(name));
   const districtTokens = new Set(tokens(district));
   const categoryTokens = new Set(tokens(category));
   const descriptionTokens = new Set(tokens(description));
-  const notesTokens = new Set(tokens(notes));
+  const circuitTokens = new Set(tokens(circuit));
 
   let score = 0;
   if (name === phrase) score += 120;
@@ -46,7 +46,7 @@ function scoreDestination(destination, phrase, queryTokens) {
     else if (districtTokens.has(token)) score += 10;
     else if (categoryTokens.has(token)) score += 6;
     else if (descriptionTokens.has(token)) score += 3;
-    else if (notesTokens.has(token)) score += 1;
+    else if (circuitTokens.has(token)) score += 2;
   }
 
   return score;
@@ -76,7 +76,7 @@ module.exports = api(async (req, res) => {
       destination,
       score: scoreDestination(destination, normalizedQuery, queryTokens)
     }))
-    .filter(item => item.score > 0)
+    .filter(item => item.score >= Math.max(10, queryTokens.length * 10))
     .sort((a, b) => b.score - a.score || a.destination.name.localeCompare(b.destination.name))
     .slice(0, 5)
     .map(({ destination }) => ({
@@ -85,6 +85,10 @@ module.exports = api(async (req, res) => {
       district: destination.district,
       category: destination.category,
       description: destination.description,
+      imageUrl: destination.imageUrl || null,
+      imageAlt: destination.imageAlt || null,
+      imageCredit: destination.imageCredit || null,
+      imageSourceUrl: destination.imageSourceUrl || null,
       officialSourceUrl: destination.officialSourceUrl,
       coordinateSourceUrl: destination.coordinateSourceUrl,
       sourceNotes: destination.sourceNotes,

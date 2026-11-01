@@ -39,6 +39,21 @@ test("destination records have unique slugs and complete source metadata", () =>
   }
 });
 
+test("expanded catalogue covers multiple districts and photo records include attribution", () => {
+  assert.ok(destinations.length >= 40);
+  assert.ok(new Set(destinations.map(item => item.district)).size >= 15);
+  const photographed = destinations.filter(item => item.imageUrl);
+  assert.ok(photographed.length >= 9);
+  for (const item of photographed) {
+    assert.match(item.imageUrl, /^https:\/\//);
+    assert.ok(item.imageAlt);
+    assert.match(item.imageSourceUrl, /^https:\/\//);
+    assert.ok(item.imageCredit);
+    assert.match(item.imageLicenseUrl, /^https:\/\//);
+    assert.match(item.imageChanges, /No changes made/);
+  }
+});
+
 test("destination list API returns the complete public catalogue", () => {
   const response = invoke(listHandler, "GET");
   assert.equal(response.statusCode, 200);
@@ -55,8 +70,9 @@ test("destination list API filters by category and search query", () => {
 
   const query = invoke(listHandler, "GET", { q: "Pochampally" });
   assert.equal(query.statusCode, 200);
-  assert.equal(query.body.count, 1);
-  assert.equal(query.body.data[0].slug, "bhoodan-pochampally");
+  assert.ok(query.body.count >= 2);
+  assert.ok(query.body.data.some(item => item.slug === "bhoodan-pochampally"));
+  assert.ok(query.body.data.some(item => item.slug === "pochampally-ikat-village"));
 });
 
 test("destination list API rejects invalid filters and oversized queries", () => {
