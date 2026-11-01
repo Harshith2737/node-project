@@ -14,6 +14,12 @@ function tokens(value) {
   return normalize(value).match(/[a-z0-9]+/g) || [];
 }
 
+const STOP_WORDS = new Set([
+  "a", "an", "and", "are", "about", "best", "can", "for", "from", "how",
+  "in", "is", "near", "nearby", "not", "of", "place", "places", "that",
+  "the", "to", "visit", "what", "where", "with", "you"
+]);
+
 function scoreDestination(destination, phrase, queryTokens) {
   const name = normalize(destination.name);
   const district = normalize(destination.district);
@@ -60,9 +66,9 @@ module.exports = api(async (req, res) => {
   }
 
   const normalizedQuery = normalize(query);
-  const queryTokens = [...new Set(tokens(query).filter(token => token.length >= 3))];
+  const queryTokens = [...new Set(tokens(query).filter(token => token.length >= 3 && !STOP_WORDS.has(token)))];
   if (queryTokens.length === 0) {
-    throw new HttpError(400, "INVALID_QUERY", "Include a search term with at least three letters or numbers.");
+    throw new HttpError(400, "INVALID_QUERY", "Include a specific place, district or topic rather than general words.");
   }
 
   const data = destinations
