@@ -20,7 +20,12 @@ function scoreDestination(destination, phrase, queryTokens) {
   const category = normalize(destination.category);
   const description = normalize(destination.description);
   const notes = normalize(destination.sourceNotes);
-  const searchable = [name, district, category, description, notes].join(" ");
+
+  const nameTokens = new Set(tokens(name));
+  const districtTokens = new Set(tokens(district));
+  const categoryTokens = new Set(tokens(category));
+  const descriptionTokens = new Set(tokens(description));
+  const notesTokens = new Set(tokens(notes));
 
   let score = 0;
   if (name === phrase) score += 120;
@@ -31,14 +36,14 @@ function scoreDestination(destination, phrase, queryTokens) {
   if (description.includes(phrase)) score += 15;
 
   for (const token of queryTokens) {
-    if (name.includes(token)) score += 14;
-    else if (district.includes(token)) score += 10;
-    else if (category.includes(token)) score += 6;
-    else if (description.includes(token)) score += 3;
-    else if (notes.includes(token)) score += 1;
+    if (nameTokens.has(token)) score += 14;
+    else if (districtTokens.has(token)) score += 10;
+    else if (categoryTokens.has(token)) score += 6;
+    else if (descriptionTokens.has(token)) score += 3;
+    else if (notesTokens.has(token)) score += 1;
   }
 
-  return searchable.includes(phrase) ? score : score;
+  return score;
 }
 
 module.exports = api(async (req, res) => {
@@ -55,9 +60,9 @@ module.exports = api(async (req, res) => {
   }
 
   const normalizedQuery = normalize(query);
-  const queryTokens = [...new Set(tokens(query))];
+  const queryTokens = [...new Set(tokens(query).filter(token => token.length >= 3))];
   if (queryTokens.length === 0) {
-    throw new HttpError(400, "INVALID_QUERY", "Search query must contain letters or numbers.");
+    throw new HttpError(400, "INVALID_QUERY", "Include a search term with at least three letters or numbers.");
   }
 
   const data = destinations
