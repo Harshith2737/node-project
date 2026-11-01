@@ -47,9 +47,14 @@ test("guide search returns an empty result instead of inventing an answer", asyn
 });
 
 test("guide search validates methods and user input", async () => {
-  assert.equal((await invoke(guideHandler, "POST", { q: "Warangal" }).statusCode, 405)).statusCode, 405);
-  assert.equal((await invoke(guideHandler, "GET", { q: ["Warangal", "Hyderabad"] }).statusCode, 400)).statusCode, 400);
-  assert.equal((await invoke(guideHandler, "GET", { q: "x" }).statusCode, 400)).statusCode, 400);
-  assert.equal((await invoke(guideHandler, "GET", { q: "x".repeat(81) }).statusCode, 400)).statusCode, 400);
-  assert.equal((await invoke(guideHandler, "GET", { q: "!!!" }).statusCode, 400)).statusCode, 400);
+  const wrongMethod = await invoke(guideHandler, "POST", { q: "Warangal" });
+  const repeatedQuery = await invoke(guideHandler, "GET", { q: ["Warangal", "Hyderabad"] });
+  const tooShort = await invoke(guideHandler, "GET", { q: "x" });
+  const tooLong = await invoke(guideHandler, "GET", { q: "x".repeat(81) });
+  const noWords = await invoke(guideHandler, "GET", { q: "!!!" });
+  assert.equal(wrongMethod.statusCode, 405);
+  assert.equal(repeatedQuery.statusCode, 400);
+  assert.equal(tooShort.statusCode, 400);
+  assert.equal(tooLong.statusCode, 400);
+  assert.equal(noWords.statusCode, 400);
 });
