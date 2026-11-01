@@ -192,16 +192,56 @@ function calculateCarbon() {
 }
 
 function openModal(type) {
-  const views = {
-    login: '<h2>Welcome</h2><p>Authentication is not connected yet. This screen is a preview only.</p><button class="primary full" type="button" onclick="closeModal()">Close</button>',
-    ai: '<h2>Telangana Guide</h2><p>Sample responses only. The live AI guide will be added after a verified knowledge source and AI provider are configured.</p><input id="aiq" placeholder="Ask about Hyderabad, Warangal or Pochampally"><button class="primary" type="button" onclick="aiAnswer()">Ask Guide</button><div id="aiout" aria-live="polite"></div>',
-    story: '<h2>Culture Archive</h2><p>Story contributions are not being stored yet. This workflow needs sign-in, moderation and persistent storage before accepting entries.</p><button class="primary" type="button" onclick="closeModal()">Close</button>',
-    festival: '<h2>Telangana Festivals</h2><p><b>Bathukamma</b> • Floral festival celebrating Telangana cultural identity.</p><p><b>Bonalu</b> • Traditional festival with deep local religious and cultural significance.</p><p><b>Sammakka Saralamma Jatara</b> • Major tribal-cultural gathering.</p>',
-    report: '<h2>Report a Heritage Issue</h2><p>Report intake is not enabled. It will require verified identity or safe anonymous reporting, validation, rate limiting and database storage.</p><button class="primary" type="button" onclick="closeModal()">Close</button>'
-  };
-  openCustom(views[type] || "<p>Unavailable.</p>");
-}
+  const content = document.createElement("div");
+  const addText = (tag, text) => content.append(makeElement(tag, "", text));
 
+  if (type === "login") {
+    addText("h2", "Welcome");
+    addText("p", "Authentication is not connected yet. This screen is a preview only.");
+  } else if (type === "ai") {
+    addText("h2", "Telangana Guide");
+    addText("p", "Sample responses only. A live AI guide needs a verified knowledge source and a configured AI service.");
+    const input = makeElement("input");
+    input.id = "aiq";
+    input.type = "text";
+    input.maxLength = 240;
+    input.placeholder = "Ask about Hyderabad, Warangal or Pochampally";
+    input.setAttribute("aria-label", "Question for the Telangana guide");
+    const ask = makeElement("button", "primary", "Ask Guide");
+    ask.type = "button";
+    ask.addEventListener("click", aiAnswer);
+    content.append(input, ask, makeElement("div", "", ""));
+    const output = content.lastElementChild;
+    output.id = "aiout";
+    output.setAttribute("aria-live", "polite");
+  } else if (type === "story") {
+    addText("h2", "Culture Archive");
+    addText("p", "Story contributions are not stored yet. This workflow needs sign-in, moderation and persistent storage before accepting entries.");
+  } else if (type === "festival") {
+    addText("h2", "Telangana Festivals");
+    const festivalItems = [
+      ["Bathukamma", "Floral festival celebrating Telangana cultural identity."],
+      ["Bonalu", "Traditional festival with deep local religious and cultural significance."],
+      ["Sammakka Saralamma Jatara", "Major tribal-cultural gathering."]
+    ];
+    for (const [name, description] of festivalItems) {
+      const paragraph = document.createElement("p");
+      paragraph.append(makeElement("b", "", name), document.createTextNode(" • " + description));
+      content.append(paragraph);
+    }
+  } else if (type === "report") {
+    addText("h2", "Report a Heritage Issue");
+    addText("p", "Report intake is not enabled yet. It will require validated submissions, rate limiting, safe storage and a moderation workflow.");
+  } else {
+    addText("p", "This section is unavailable.");
+  }
+
+  const closeButton = makeElement("button", "primary full", "Close");
+  closeButton.type = "button";
+  closeButton.addEventListener("click", closeModal);
+  content.append(closeButton);
+  openCustom(content);
+}
 function aiAnswer() {
   const question = ($("#aiq")?.value || "").trim().toLocaleLowerCase("en-IN");
   const answer = question.includes("warangal")
