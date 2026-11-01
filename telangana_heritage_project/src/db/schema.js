@@ -81,4 +81,19 @@ const rateLimitBuckets = pgTable("rate_limit_buckets", {
   resetAt: timestamp("reset_at", { withTimezone: true }).notNull()
 });
 
-module.exports = { userProfiles, stories, heritageReports, savedTrips, contributorRequests, moderationEvents, rateLimitBuckets };
+const travelMemories = pgTable("travel_memories", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  ownerUserId: text("owner_user_id").notNull().references(() => userProfiles.clerkUserId, { onDelete: "cascade" }),
+  blobPath: text("blob_path").notNull().unique(),
+  contentType: text("content_type").notNull(),
+  fileSize: integer("file_size").notNull(),
+  caption: text("caption").notNull().default(""),
+  destinationName: text("destination_name"),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow()
+}, t => [
+  check("travel_memories_content_type_check", sql.raw("content_type in ('image/webp','image/jpeg')")),
+  check("travel_memories_file_size_check", sql.raw("file_size between 1 and 2000000")),
+  index("travel_memories_owner_created_idx").on(t.ownerUserId, t.createdAt)
+]);
+
+module.exports = { userProfiles, stories, heritageReports, savedTrips, contributorRequests, moderationEvents, rateLimitBuckets, travelMemories };
