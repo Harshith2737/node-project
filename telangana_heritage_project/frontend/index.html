@@ -8,8 +8,9 @@
 <body>
 <header class="topbar">
   <div class="brand"><span>TH</span><div><b>Telangana Heritage</b><small>Explore • Preserve • Sustain</small></div></div>
-  <nav><a href="#explore">Explore</a><a href="#map">Map</a><a href="#plan">Plan Trip</a><a href="#culture">Culture</a><a href="#sustain">Sustainability</a><a href="#report">Report</a></nav>
-  <button class="login" onclick="openModal('login')">Login</button>
+  <nav id="primaryNav" aria-label="Primary navigation"><a href="#explore">Explore</a><a href="#map">Map</a><a href="#plan">Plan Trip</a><a href="#culture">Culture</a><a href="#sustain">Sustainability</a><a href="#report">Report</a></nav>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+  <button class="login" type="button" onclick="openModal('login')">Login</button>
 </header>
 
 <section class="hero">
@@ -28,7 +29,7 @@
 
 <section id="explore">
   <div class="section-title"><div><span>DISCOVER</span><h2>Explore Telangana</h2></div><p>Find heritage, nature and living culture. Filter destinations and learn before you visit.</p></div>
-  <div class="filters"><input id="search" placeholder="Search places, districts or culture..." oninput="renderPlaces()"><select id="category" onchange="renderPlaces()"><option value="all">All categories</option><option>Heritage</option><option>Nature</option><option>Culture</option></select></div>
+  <div class="filters"><input id="search" type="search" aria-label="Search destinations" placeholder="Search places, districts or culture..." oninput="renderPlaces()"><select id="category" aria-label="Filter destinations by category" onchange="renderPlaces()"><option value="all">All categories</option><option>Heritage</option><option>Nature</option><option>Culture</option></select></div>
   <div id="places" class="grid"></div>
 </section>
 
@@ -41,9 +42,9 @@
   <div class="section-title"><div><span>SMART TRAVEL</span><h2>Plan My Trip</h2></div><p>Create a practical itinerary with sustainability in mind.</p></div>
   <div class="planner">
     <div class="form-card">
-      <label>Destination</label><select id="tripDestination"><option>Warangal</option><option>Hyderabad</option><option>Yadadri</option><option>Adilabad</option></select>
-      <label>Duration</label><select id="tripDays"><option>1 day</option><option>2 days</option><option>3 days</option></select>
-      <label>Interest</label><select id="tripInterest"><option>History & Heritage</option><option>Nature</option><option>Culture & Food</option></select>
+      <label>Destination</label><select id="tripDestination" aria-label="Trip destination"><option>Warangal</option><option>Hyderabad</option><option>Yadadri</option><option>Adilabad</option></select>
+      <label>Duration</label><select id="tripDays" aria-label="Trip duration"><option>1 day</option><option>2 days</option><option>3 days</option></select>
+      <label>Interest</label><select id="tripInterest" aria-label="Trip interest"><option>History & Heritage</option><option>Nature</option><option>Culture & Food</option></select>
       <button class="primary full" onclick="generateTrip()">Generate itinerary</button>
     </div>
     <div class="itinerary" id="itinerary"><div class="empty"><span>✦</span><h3>Your itinerary appears here</h3><p>Choose your destination and preferences to generate a sample sustainable trip.</p></div></div>
@@ -64,8 +65,8 @@
   <div class="sustain-grid">
     <div class="score-card"><small>DESTINATION SCORE</small><strong>82<span>/100</span></strong><div class="progress"><i></i></div><p>Good sustainability potential</p><ul><li>✓ Local community support</li><li>✓ Heritage preservation</li><li>✓ Low-impact travel options</li></ul></div>
     <div class="carbon"><h3>Travel Carbon Calculator</h3><p>Estimate the footprint of your journey and compare transport options.</p>
-      <div class="row"><select id="transport"><option>Bus</option><option>Train</option><option>Car</option><option>Bike</option></select><input id="distance" type="number" value="150" min="1"><span>km</span></div>
-      <button class="primary" onclick="calculateCarbon()">Calculate</button><div id="carbonResult" class="result">Approx. CO₂: —</div>
+      <div class="row"><select id="transport" aria-label="Mode of transport"><option>Bus</option><option>Train</option><option>Car</option><option>Bike</option></select><input id="distance" type="number" value="150" min="1" max="10000" step="1" aria-label="Travel distance in kilometres"><span>km</span></div>
+      <button class="primary" onclick="calculateCarbon()">Calculate</button><div id="carbonResult" class="result" aria-live="polite">Illustrative CO₂ estimate: —</div>
     </div>
   </div>
 </section>
@@ -77,6 +78,6 @@
 
 <footer><div><b>Telangana Heritage</b><br><small>Sustainable Tourism & Cultural Heritage Preservation Platform</small></div><div>College Project MVP • 2026</div></footer>
 
-<div class="modal" id="modal"><div class="modal-card"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Telangana Heritage dialog"><div class="modal-card"><button class="close" type="button" aria-label="Close dialog" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
 <script src="app.js"></script>
 </body></html>
