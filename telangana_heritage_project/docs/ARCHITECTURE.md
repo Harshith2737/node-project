@@ -6,8 +6,8 @@ The current MVP is intentionally lightweight:
 
 - **Static client:** HTML, CSS and browser JavaScript in `frontend/`.
 - **Destination catalogue:** one reviewed JSON dataset in `frontend/data/destinations.json`, used by the destination explorer, interactive map and read-only API.
-- **Map:** Leaflet renders real geographic markers. The default map tiles are OpenStreetMap standard tiles and carry visible attribution.
-- **API:** small, stateless Vercel Node.js Functions in `api/v1/` provide health checks and read-only destination queries.
+- **Map:** Leaflet 1.9.4 renders sourced destination coordinates. The map loads OpenStreetMap standard tiles with visible attribution and a report-map-issue link.
+- **API:** stateless Vercel Node.js Functions in `api/v1/` provide health checks and read-only destination queries. The client calls the API and falls back to the shared JSON catalogue when served outside Vercel.
 - **Tests:** Node's built-in test runner validates the catalogue and API handlers without adding runtime dependencies.
 
 The older `backend/server.js` is a local Express learning prototype. It is not the deployed API and must not be used to collect real reports because it stores data in process memory.
