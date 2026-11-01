@@ -16,6 +16,10 @@
   "dependencies": {
     "@clerk/backend": "3.26.5",
     "@neondatabase/serverless": "1.2.0",
-    "drizzle-orm": "0.45.4"
+    "drizzle-orm": "0.45.4",
+    "@vercel/blob": "2.8.2"
+  },
+  "overrides": {
+    "zod": "4.6.7"
   }
 }

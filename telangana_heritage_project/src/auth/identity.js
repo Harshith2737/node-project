@@ -4,6 +4,7 @@ const { eq } = require("drizzle-orm");
 const { getDb } = require("../db");
 const { userProfiles } = require("../db/schema");
 const { HttpError } = require("../shared/http");
+const { clerkKeysAreValid } = require("./keys");
 
 function authorizedParties(){
   const out=String(process.env.APP_ORIGINS||"").split(",").map(x=>x.trim()).filter(Boolean);
@@ -15,7 +16,7 @@ function authorizedParties(){
 async function authenticate(req){
   const match=/^Bearer\s+(.+)$/i.exec(req.headers?.authorization||"");
   if(!match)throw new HttpError(401,"AUTH_REQUIRED","Sign in to continue.");
-  if(!process.env.CLERK_SECRET_KEY)throw new HttpError(503,"AUTH_NOT_CONFIGURED","Authentication is not configured.");
+  if(!clerkKeysAreValid())throw new HttpError(503,"AUTH_NOT_CONFIGURED","Authentication requires a matching Clerk key pair for this environment.");
   const parties=authorizedParties();
   if(!parties.length)throw new HttpError(503,"AUTH_ORIGINS_NOT_CONFIGURED","Application origins are not configured.");
   try{

@@ -2,7 +2,45 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Telangana Heritage — Sustainable Tourism</title>
+<title>Telangana Heritage | Historic Places, Culture &amp; Travel Guide</title>
+<meta name="description" content="Explore Telangana's forts, temples, monuments, crafts, festivals and nature trails. Plan responsible trips, discover local culture and save your own private travel memories.">
+<meta name="application-name" content="Telangana Heritage">
+<meta name="author" content="Telangana Heritage">
+<meta name="theme-color" content="#183d31">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="googlebot" content="index,follow,max-image-preview:large">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="canonical" href="https://tgheritage.vercel.app/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Telangana Heritage">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Telangana Heritage — Discover. Experience. Preserve.">
+<meta property="og:description" content="Find Telangana's historic places, living culture and nature trails. Plan better journeys and keep your private travel memories.">
+<meta property="og:url" content="https://tgheritage.vercel.app/">
+<meta property="og:image" content="https://tgheritage.vercel.app/heritage-social-card.svg">
+<meta property="og:image:type" content="image/svg+xml">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Telangana Heritage — Discover. Experience. Preserve.">
+<meta name="twitter:description" content="Explore Telangana's heritage, culture and nature.">
+<meta name="twitter:image" content="https://tgheritage.vercel.app/heritage-social-card.svg">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"Telangana Heritage",
+  "url":"https://tgheritage.vercel.app/",
+  "description":"A responsible tourism and cultural heritage guide to Telangana, India.",
+  "inLanguage":["en","te"]
+}</script>
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"TouristDestination",
+  "name":"Telangana",
+  "description":"Discover the historic monuments, temples, forts, crafts, festivals and natural landscapes of Telangana, India.",
+  "touristType":["Culture","Heritage tourism","Nature tourism"],
+  "url":"https://tgheritage.vercel.app/"
+}</script>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <meta name="map-tile-url" content="https://tile.openstreetmap.org/{z}/{x}/{y}.png">
@@ -10,9 +48,9 @@
 <body>
 <header class="topbar">
   <div class="brand"><span>TH</span><div><b>Telangana Heritage</b><small>Explore • Preserve • Sustain</small></div></div>
-  <nav id="primaryNav" aria-label="Primary navigation"><a href="#explore">Explore</a><a href="#map">Map</a><a href="#plan">Plan Trip</a><a href="#getting-around">Getting there</a><a href="#experiences">Trails</a><a href="#culture">Culture</a><a href="#essentials">Travel Guide</a><a href="#sustain">Sustainability</a><a href="#report">Report</a></nav>
+  <nav id="primaryNav" aria-label="Primary navigation"><a href="#explore">Explore</a><a href="#memories">My Memories</a><a href="#map">Map</a><a href="#plan">Plan Trip</a><a href="#getting-around">Getting there</a><a href="#experiences">Trails</a><a href="#culture">Culture</a><a href="#essentials">Travel Guide</a><a href="#sustain">Sustainability</a><a href="#report">Report</a></nav>
   <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav">Menu</button>
-  <button class="login" type="button" onclick="openModal('login')">Login</button>
+  <button class="login" id="loginButton" type="button" onclick="openModal('login')">Login</button><div id="userButtonContainer" hidden></div>
 </header>
 
 <section class="hero">
@@ -131,6 +169,26 @@
   <button class="primary" onclick="openModal('report')">Report a Heritage Issue</button>
 </section>
 
+<section id="memories" class="memory-section">
+  <div class="section-title"><div><span>YOUR PRIVATE PHOTO JOURNAL</span><h2>Keep the moments, not just the map.</h2></div><p>Save the places you visited, add a note, and turn a favourite photo into a Telangana-inspired postcard. Your gallery is private to your signed-in account.</p></div>
+  <div id="memoryLocked" class="memory-locked">
+    <div class="memory-lock-icon" aria-hidden="true">✦</div>
+    <div><h3>Your journeys deserve a journal.</h3><p>Sign in to save photos, captions and the places behind each memory. Only you can view or delete your saved photos.</p><button class="primary" type="button" onclick="openModal('login')">Sign in to create your journal</button></div>
+  </div>
+  <div id="memoryWorkspace" hidden>
+    <div class="memory-create">
+      <div class="memory-create-copy"><span class="memory-eyebrow">A LITTLE TIME CAPSULE</span><h3>Save a moment from your journey</h3><p>Choose a photo or open your phone camera. Add a place and a caption so you remember the story behind it.</p></div>
+      <div class="memory-form">
+        <label class="memory-field">Photo(s)<input id="memoryPhotos" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" multiple></label>
+        <div class="memory-fields-row"><label class="memory-field">Place or destination<input id="memoryDestination" type="text" maxlength="100" placeholder="e.g. Ramappa Temple"></label><label class="memory-field">Caption<input id="memoryCaption" type="text" maxlength="220" placeholder="What made this moment special?"></label></div>
+        <div class="memory-actions"><button class="primary" id="memoryUploadButton" type="button">Save to my journal</button><span id="memoryUploadStatus" role="status" aria-live="polite">Photos stay private to your account.</span></div>
+      </div>
+    </div>
+    <div class="memory-toolbar"><div><span class="memory-eyebrow">YOUR COLLECTION</span><h3><span id="memoryCount">0</span> saved moments</h3><small id="memoryPlaceCount">Across 0 destinations</small></div><label class="memory-search">Search your memories<input id="memorySearch" type="search" placeholder="Search captions or places…"></label></div>
+    <div id="memoryGallery" class="memory-gallery"><div class="memory-empty"><h3>Your journal is ready.</h3><p>Save your first photo above and it will appear here.</p></div></div>
+  </div>
+  <p class="memory-privacy-note">Privacy note: photos are processed in your browser to remove embedded camera/location metadata, then stored in private cloud storage. Your photos are not part of the public destination gallery.</p>
+</section>
 <footer><div><b>Telangana Heritage</b><br><small>Sustainable Tourism & Cultural Heritage Preservation Platform</small></div><div>Explore responsibly · Preserve together<br><small>Destination and photo sources are linked in each place detail.</small></div></footer>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Telangana Heritage dialog"><div class="modal-card"><button class="close" type="button" aria-label="Close dialog" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
@@ -139,5 +197,6 @@
 <script src="mobility.js"></script>
 <script src="app.js"></script>
 <script src="auth.js"></script>
+<script src="memories.js" defer></script>
 <script src="platform.js"></script>
 </body></html>
