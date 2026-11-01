@@ -4,6 +4,8 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Telangana Heritage — Sustainable Tourism</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<meta name="map-tile-url" content="https://tile.openstreetmap.org/{z}/{x}/{y}.png">
 </head>
 <body>
 <header class="topbar">
@@ -34,8 +36,9 @@
 </section>
 
 <section id="map" class="dark-section">
-  <div class="section-title inverse"><div><span>DISCOVER ON MAP</span><h2>Telangana Heritage Map</h2></div><p>Interactive destination discovery prototype. Click a marker to view details.</p></div>
-  <div class="map-wrap"><div class="map-box" id="mapBox"></div><aside class="map-list" id="mapList"></aside></div>
+  <div class="section-title inverse"><div><span>DISCOVER ON MAP</span><h2>Telangana Heritage Map</h2></div><p>Browse mapped heritage, nature and craft destinations. Select a marker or a place in the list for sources and visitor context.</p></div>
+  <div class="map-wrap"><div class="map-box" id="mapBox" role="region" aria-label="Map of Telangana destinations"></div><aside class="map-list" id="mapList" aria-label="Mapped destinations"></aside></div>
+  <p class="map-attribution">Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> · <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener noreferrer">Report a map issue</a></p>
 </section>
 
 <section id="plan">
@@ -79,5 +82,7 @@
 <footer><div><b>Telangana Heritage</b><br><small>Sustainable Tourism & Cultural Heritage Preservation Platform</small></div><div>College Project MVP • 2026</div></footer>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Telangana Heritage dialog"><div class="modal-card"><button class="close" type="button" aria-label="Close dialog" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="map.js"></script>
 <script src="app.js"></script>
 </body></html>
