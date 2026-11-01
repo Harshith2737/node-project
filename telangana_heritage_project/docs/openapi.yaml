@@ -91,6 +91,18 @@ paths:
       responses:
         '200': { description: Destination results }
         '400': { description: Invalid search filter }
+  /api/v1/guide:
+    get:
+      summary: Search reviewed destination records and return official source links
+      description: Catalogue retrieval only; no generative AI response is produced.
+      parameters:
+        - in: query
+          name: q
+          required: true
+          schema: { type: string, minLength: 2, maxLength: 80 }
+      responses:
+        '200': { description: Ranked source-linked destination matches; an empty list means no catalogue match }
+        '400': { description: Invalid query }
   /api/v1/destinations/{slug}:
     get:
       summary: Destination details
