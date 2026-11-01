@@ -14,7 +14,7 @@ function authorizedParties(){
   return [...new Set(out)];
 }
 async function authenticate(req){
-  const match=/^Bearer\\s+(.+)$/i.exec(req.headers?.authorization||"");
+  const match=/^Bearer\s+(.+)$/i.exec(req.headers?.authorization||"");
   if(!match)throw new HttpError(401,"AUTH_REQUIRED","Sign in to continue.");
   if(!clerkKeysAreValid())throw new HttpError(503,"AUTH_NOT_CONFIGURED","Authentication requires a matching Clerk key pair for this environment.");
   const parties=authorizedParties();
