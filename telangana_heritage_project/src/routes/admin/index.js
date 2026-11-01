@@ -15,10 +15,32 @@ const handlers = new Map([
   ["users", users]
 ]);
 
-module.exports = async function adminRouter(req, res) {
+function routeSegments(req) {
+  // Vercel's catch-all path may be represented differently across runtimes.
+  // Prefer the canonical request URL, then fall back to the parsed query value.
+  if (typeof req.url === "string") {
+    try {
+      const pathname = new URL(req.url, "https://vercel.invalid").pathname;
+      const prefix = "/api/v1/admin/";
+      const offset = pathname.lastIndexOf(prefix);
+      if (offset >= 0) {
+        return pathname.slice(offset + prefix.length)
+          .split("/")
+          .filter(Boolean)
+          .map(segment => decodeURIComponent(segment));
+      }
+    } catch {
+      return [];
+    }
+  }
+
   const rawPath = req.query?.path;
-  const segments = Array.isArray(rawPath) ? rawPath :
+  return Array.isArray(rawPath) ? rawPath :
     typeof rawPath === "string" ? rawPath.split("/").filter(Boolean) : [];
+}
+
+module.exports = async function adminRouter(req, res) {
+  const segments = routeSegments(req);
 
   if (segments.length === 1 && segments[0] === "queue") {
     return queue(req, res);
