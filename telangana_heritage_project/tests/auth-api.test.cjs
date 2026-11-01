@@ -15,6 +15,7 @@ const moderateReport=require("../src/routes/admin/reports");
 const reviewContributor=require("../src/routes/admin/contributor-requests");
 const updateRole=require("../src/routes/admin/users");
 const {authorizedParties,roles}=require("../src/auth/identity");
+const {clerkKeysAreValid}=require("../src/auth/keys");
 
 function response(){return{
   headers:{},statusCode:200,body:null,
@@ -37,8 +38,12 @@ async function withEnv(values,fn){
  finally{for(const [key,value] of Object.entries(old)){if(value===undefined)delete process.env[key];else process.env[key]=value;}}
 }
 
-test("public Clerk configuration exposes only the publishable key",async()=>{
- await withEnv({NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:"pk_test_public",CLERK_SECRET_KEY:"sk_test_private"},async()=>{
+test("preview Clerk configuration exposes only a matching test publishable key",async()=>{
+ await withEnv({
+  VERCEL_ENV:"preview",
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:"pk_test_public",
+  CLERK_SECRET_KEY:"sk_test_private"
+ },async()=>{
   const res=await invoke(config,"GET");
   assert.equal(res.statusCode,200);
   assert.equal(res.body.authEnabled,true);
@@ -46,6 +51,47 @@ test("public Clerk configuration exposes only the publishable key",async()=>{
   assert.equal(JSON.stringify(res.body).includes("sk_test_private"),false);
   assert.equal(res.headers["cache-control"],"no-store");
  });
+});
+
+test("production Clerk configuration fails closed when test keys are configured",async()=>{
+ await withEnv({
+  VERCEL_ENV:"production",
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:"pk_test_public",
+  CLERK_SECRET_KEY:"sk_test_private"
+ },async()=>{
+  const res=await invoke(config,"GET");
+  assert.equal(res.statusCode,200);
+  assert.equal(res.body.authEnabled,false);
+  assert.equal(res.body.publishableKey,null);
+  assert.equal(clerkKeysAreValid(),false);
+ });
+});
+
+test("production Clerk configuration accepts a matching live key pair",async()=>{
+ await withEnv({
+  VERCEL_ENV:"production",
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:"pk_live_public",
+  CLERK_SECRET_KEY:"sk_live_private"
+ },async()=>{
+  const res=await invoke(config,"GET");
+  assert.equal(res.statusCode,200);
+  assert.equal(res.body.authEnabled,true);
+  assert.equal(res.body.publishableKey,"pk_live_public");
+  assert.equal(clerkKeysAreValid(),true);
+ });
+});
+
+test("mismatched Clerk key modes are rejected in preview and production",async()=>{
+ assert.equal(clerkKeysAreValid({
+  VERCEL_ENV:"preview",
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:"pk_live_public",
+  CLERK_SECRET_KEY:"sk_test_private"
+ }),false);
+ assert.equal(clerkKeysAreValid({
+  VERCEL_ENV:"production",
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:"pk_live_public",
+  CLERK_SECRET_KEY:"sk_test_private"
+ }),false);
 });
 
 test("all protected endpoints reject requests without a bearer token",async()=>{
