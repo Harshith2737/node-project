@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Telangana Heritage — Sustainable Tourism</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span>TH</span><div><b>Telangana Heritage</b><small>Explore • Preserve • Sustain</small></div></div>
+  <nav><a href="#explore">Explore</a><a href="#map">Map</a><a href="#plan">Plan Trip</a><a href="#culture">Culture</a><a href="#sustain">Sustainability</a><a href="#report">Report</a></nav>
+  <button class="login" onclick="openModal('login')">Login</button>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="pill">TELANGANA • INDIA</div>
+    <h1>Discover Telangana.<br><em>Preserve its legacy.</em></h1>
+    <p>A digital platform for responsible tourism, cultural preservation and community participation across Telangana.</p>
+    <div class="hero-actions"><a class="primary" href="#explore">Explore Heritage</a><button class="secondary" onclick="openModal('ai')">Ask AI Guide</button></div>
+    <div class="stats"><div><b>33</b><span>Districts</span></div><div><b>100+</b><span>Destinations</span></div><div><b>∞</b><span>Stories to preserve</span></div></div>
+  </div>
+  <div class="hero-art">
+    <div class="sun"></div><div class="fort">TELANGANA<br><strong>HERITAGE</strong></div>
+    <div class="art-label"><b>Travel responsibly</b><br>Support local culture & communities</div>
+  </div>
+</section>
+
+<section id="explore">
+  <div class="section-title"><div><span>DISCOVER</span><h2>Explore Telangana</h2></div><p>Find heritage, nature and living culture. Filter destinations and learn before you visit.</p></div>
+  <div class="filters"><input id="search" placeholder="Search places, districts or culture..." oninput="renderPlaces()"><select id="category" onchange="renderPlaces()"><option value="all">All categories</option><option>Heritage</option><option>Nature</option><option>Culture</option></select></div>
+  <div id="places" class="grid"></div>
+</section>
+
+<section id="map" class="dark-section">
+  <div class="section-title inverse"><div><span>DISCOVER ON MAP</span><h2>Telangana Heritage Map</h2></div><p>Interactive destination discovery prototype. Click a marker to view details.</p></div>
+  <div class="map-wrap"><div class="map-box" id="mapBox"></div><aside class="map-list" id="mapList"></aside></div>
+</section>
+
+<section id="plan">
+  <div class="section-title"><div><span>SMART TRAVEL</span><h2>Plan My Trip</h2></div><p>Create a practical itinerary with sustainability in mind.</p></div>
+  <div class="planner">
+    <div class="form-card">
+      <label>Destination</label><select id="tripDestination"><option>Warangal</option><option>Hyderabad</option><option>Yadadri</option><option>Adilabad</option></select>
+      <label>Duration</label><select id="tripDays"><option>1 day</option><option>2 days</option><option>3 days</option></select>
+      <label>Interest</label><select id="tripInterest"><option>History & Heritage</option><option>Nature</option><option>Culture & Food</option></select>
+      <button class="primary full" onclick="generateTrip()">Generate itinerary</button>
+    </div>
+    <div class="itinerary" id="itinerary"><div class="empty"><span>✦</span><h3>Your itinerary appears here</h3><p>Choose your destination and preferences to generate a sample sustainable trip.</p></div></div>
+  </div>
+</section>
+
+<section id="culture" class="soft">
+  <div class="section-title"><div><span>LIVING HERITAGE</span><h2>Culture Archive</h2></div><p>Preserve stories, crafts, recipes and memories contributed by communities.</p></div>
+  <div class="culture-grid">
+    <article><b>🎨</b><h3>Local Crafts</h3><p>Pochampally Ikat, Cheriyal art, Pembarthi metal craft and more.</p><button onclick="openModal('story')">View archive</button></article>
+    <article><b>🎙️</b><h3>Oral Histories</h3><p>Record and preserve village stories, folk traditions and local memories.</p><button onclick="openModal('story')">Contribute story</button></article>
+    <article><b>🎭</b><h3>Festivals</h3><p>Discover Bathukamma, Bonalu and Telangana's diverse cultural celebrations.</p><button onclick="openModal('festival')">Explore festivals</button></article>
+  </div>
+</section>
+
+<section id="sustain">
+  <div class="section-title"><div><span>TRAVEL RESPONSIBLY</span><h2>Sustainability Centre</h2></div><p>Make better travel choices and help protect the places you visit.</p></div>
+  <div class="sustain-grid">
+    <div class="score-card"><small>DESTINATION SCORE</small><strong>82<span>/100</span></strong><div class="progress"><i></i></div><p>Good sustainability potential</p><ul><li>✓ Local community support</li><li>✓ Heritage preservation</li><li>✓ Low-impact travel options</li></ul></div>
+    <div class="carbon"><h3>Travel Carbon Calculator</h3><p>Estimate the footprint of your journey and compare transport options.</p>
+      <div class="row"><select id="transport"><option>Bus</option><option>Train</option><option>Car</option><option>Bike</option></select><input id="distance" type="number" value="150" min="1"><span>km</span></div>
+      <button class="primary" onclick="calculateCarbon()">Calculate</button><div id="carbonResult" class="result">Approx. CO₂: —</div>
+    </div>
+  </div>
+</section>
+
+<section id="report" class="report-section">
+  <div><span>COMMUNITY ACTION</span><h2>Help protect Telangana's heritage.</h2><p>Report litter, vandalism, damage or other issues at a heritage location. Every report helps create a better preservation record.</p></div>
+  <button class="primary" onclick="openModal('report')">Report a Heritage Issue</button>
+</section>
+
+<footer><div><b>Telangana Heritage</b><br><small>Sustainable Tourism & Cultural Heritage Preservation Platform</small></div><div>College Project MVP • 2026</div></footer>
+
+<div class="modal" id="modal"><div class="modal-card"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+<script src="app.js"></script>
+</body></html>
