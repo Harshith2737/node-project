@@ -8,11 +8,12 @@ const reports=require("../api/v1/reports");
 const trips=require("../api/v1/trips");
 const submissions=require("../api/v1/submissions");
 const contributorRequests=require("../api/v1/contributor-requests");
-const queue=require("../api/v1/admin/queue");
-const moderateStory=require("../api/v1/admin/stories/[id]");
-const moderateReport=require("../api/v1/admin/reports/[id]");
-const reviewContributor=require("../api/v1/admin/contributor-requests/[id]");
-const updateRole=require("../api/v1/admin/users/[userId]");
+const adminRouter=require("../src/routes/admin");
+const queue=require("../src/routes/admin/queue");
+const moderateStory=require("../src/routes/admin/stories");
+const moderateReport=require("../src/routes/admin/reports");
+const reviewContributor=require("../src/routes/admin/contributor-requests");
+const updateRole=require("../src/routes/admin/users");
 const {authorizedParties,roles}=require("../src/auth/identity");
 
 function response(){return{
@@ -66,6 +67,24 @@ test("all protected endpoints reject requests without a bearer token",async()=>{
   assert.equal(res.statusCode,401,verb+" endpoint must require Clerk authentication");
   assert.equal(res.body.error,"AUTH_REQUIRED");
  }
+});
+
+test("consolidated admin router preserves protected route dispatch",async()=>{
+ const id="11111111-1111-4111-8111-111111111111";
+ const cases=[
+  ["GET",["queue"]],
+  ["PATCH",["stories",id]],
+  ["PATCH",["reports",id]],
+  ["PATCH",["contributor-requests",id]],
+  ["PATCH",["users","user_123456789"]]
+ ];
+ for(const [verb,path] of cases){
+  const res=await invoke(adminRouter,verb,{path},{status:"published",role:"contributor"});
+  assert.equal(res.statusCode,401,verb+" /admin/"+path.join("/")+" must still require authentication");
+  assert.equal(res.body.error,"AUTH_REQUIRED");
+ }
+ const missing=await invoke(adminRouter,"GET",{path:["unknown"]});
+ assert.equal(missing.statusCode,404);
 });
 
 test("write endpoints reject invalid methods before database access",async()=>{
