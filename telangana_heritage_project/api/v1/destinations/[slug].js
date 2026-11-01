@@ -8,7 +8,11 @@ module.exports = function destinationBySlugHandler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const slug = typeof req.query.slug === "string" ? req.query.slug.trim().toLowerCase() : "";
+  const slugValue = req.query?.slug;
+  if (typeof slugValue !== "string") {
+    return res.status(400).json({ error: "A single destination slug is required." });
+  }
+  const slug = slugValue.trim().toLowerCase();
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
     return res.status(400).json({ error: "A valid destination slug is required." });
   }
