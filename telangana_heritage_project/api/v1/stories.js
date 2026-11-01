@@ -5,10 +5,11 @@ const {stories}=require("../../src/db/schema");
 const {context,roles}=require("../../src/auth/identity");
 const {consume}=require("../../src/shared/rate-limit");
 const {api,method,body,text,sendJson,HttpError}=require("../../src/shared/http");
-const memoriesApi = require("../../src/api/memories");
+const memoriesApi=require("../../src/api/memories");
+
 module.exports=api(async(req,res)=>{
- const resource = req.query?.resource || new URL(req.url, "https://tgheritage.vercel.app").searchParams.get("resource");
- if (resource === "memories") return memoriesApi(req,res);
+ const resource=req.query?.resource||new URL(req.url,"https://tgheritage.vercel.app").searchParams.get("resource");
+ if(resource==="memories") return memoriesApi(req,res);
  method(req,res,["GET","POST"]);
  if(req.method==="GET"){
   const data=await getDb().select({id:stories.id,title:stories.title,body:stories.body,language:stories.language,createdAt:stories.createdAt})
@@ -24,3 +25,4 @@ module.exports=api(async(req,res)=>{
   .returning({id:stories.id,status:stories.status,createdAt:stories.createdAt});
  return sendJson(res,201,{message:"Story received and pending moderator review.",data:created});
 });
+module.exports.config={api:{bodyParser:{sizeLimit:"3mb"}}};
