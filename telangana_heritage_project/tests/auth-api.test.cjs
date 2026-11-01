@@ -87,6 +87,23 @@ test("consolidated admin router preserves protected route dispatch",async()=>{
  assert.equal(missing.statusCode,404);
 });
 
+test("admin router dispatches catch-all routes from the canonical request URL",async()=>{
+ const id="11111111-1111-4111-8111-111111111111";
+ const cases=[
+  ["GET","/api/v1/admin/queue"],
+  ["PATCH","/api/v1/admin/stories/"+id],
+  ["PATCH","/api/v1/admin/reports/"+id],
+  ["PATCH","/api/v1/admin/contributor-requests/"+id],
+  ["PATCH","/api/v1/admin/users/user_123456789"]
+ ];
+ for(const [verb,url] of cases){
+  const res=response();
+  await adminRouter({method:verb,url,query:{},body:{status:"published",role:"contributor"},headers:{}},res);
+  assert.equal(res.statusCode,401,verb+" "+url+" must dispatch to an authenticated handler");
+  assert.equal(res.body.error,"AUTH_REQUIRED");
+ }
+});
+
 test("write endpoints reject invalid methods before database access",async()=>{
  const report=await invoke(reports,"GET");
  assert.equal(report.statusCode,405);
