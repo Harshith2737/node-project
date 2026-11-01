@@ -61,8 +61,11 @@ test("destination list API filters by category and search query", () => {
 
 test("destination list API rejects invalid filters and oversized queries", () => {
   assert.equal(invoke(listHandler, "GET", { category: "Unknown" }).statusCode, 400);
+  assert.equal(invoke(listHandler, "GET", { category: ["Nature", "Culture"] }).statusCode, 400);
+  assert.equal(invoke(listHandler, "GET", { q: ["Warangal", "Hyderabad"] }).statusCode, 400);
   assert.equal(invoke(listHandler, "GET", { q: "x".repeat(81) }).statusCode, 400);
   assert.equal(invoke(listHandler, "POST").statusCode, 405);
+  assert.equal(invoke(detailHandler, "GET", { slug: ["ramappa-temple"] }).statusCode, 400);
 });
 
 test("destination detail API returns a record or a useful 404", () => {
