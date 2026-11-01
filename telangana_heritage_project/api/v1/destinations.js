@@ -9,8 +9,15 @@ module.exports = function destinationsHandler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const rawQuery = typeof req.query.q === "string" ? req.query.q.trim() : "";
-  const category = typeof req.query.category === "string" ? req.query.category.trim() : "";
+  const queryValue = req.query?.q;
+  const categoryValue = req.query?.category;
+  if ((queryValue !== undefined && typeof queryValue !== "string") ||
+      (categoryValue !== undefined && typeof categoryValue !== "string")) {
+    return res.status(400).json({ error: "Search and category filters must be single text values." });
+  }
+
+  const rawQuery = (queryValue || "").trim();
+  const category = (categoryValue || "").trim();
 
   if (rawQuery.length > 80) {
     return res.status(400).json({ error: "Search query must be 80 characters or fewer." });
