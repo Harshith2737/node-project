@@ -1,0 +1,9 @@
+{
+  "name": "Telangana Heritage",
+  "short_name": "TG Heritage",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f5ef",
+  "theme_color": "#183d31",
+  "description": "Explore Telangana's heritage, culture and nature."
+}
