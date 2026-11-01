@@ -21,11 +21,11 @@ The product is divided into these bounded areas:
 | Destinations | Curated places, districts, categories, coordinates and source records | Catalogue + read API implemented |
 | Mapping | Geographic discovery, marker/list synchronisation and source attribution | Leaflet map implemented |
 | Trip planning | Itinerary templates, trip preferences and saved itineraries | Browser-only sample planner |
-| Culture archive | Stories, crafts, oral histories and moderation | UI prototype only |
-| Heritage reports | Issue intake, attachments, triage and status tracking | UI prototype only |
+| Culture archive | Stories, crafts, oral histories and moderation | DB-backed submission and moderator publication workflow |
+| Heritage reports | Issue intake, triage and status tracking | Authenticated DB-backed reporting; attachment upload not enabled |
 | Sustainability | Verifiable destination indicators and transparent calculation methods | Illustrative values only |
-| Identity and roles | Tourist, contributor, moderator and administrator permissions | Not implemented |
-| Administration | Review queues, audit trail, data corrections and moderation | Not implemented |
+| Identity and roles | Clerk identity plus database-backed tourist/contributor/moderator/admin roles | Implemented; initial admin requires manual bootstrap |
+| Administration | Review queues, audit trail, role changes and moderation | Implemented in Vercel Functions |
 | AI guide | Retrieval over verified, cited destination content | Demo responses only; no model is connected |
 
 Do not label an unfinished module as live functionality. In particular, never tell a visitor that a story or issue report has been submitted until it has been durably stored and a reference ID has been returned.
@@ -128,3 +128,22 @@ Use upstream packages through their package managers and preserve their licence 
 The current map uses Leaflet 1.9.4 (BSD-2-Clause) from a pinned CDN URL with Subresource Integrity. Map imagery is supplied by OpenStreetMap's tile service, not by Leaflet. Display visible OpenStreetMap attribution, keep a valid page referrer, respect response caching, and never bulk-download, scrape, or prefetch map tiles. The public OSM tile service is best-effort and has no SLA; for a widely used production service, select a tile provider with terms and capacity appropriate to the expected traffic.
 
 Destination context is linked to official Telangana government tourism sources. Coordinate reference points are linked per record. Wikidata facts are CC0; OpenStreetMap-derived geographic data is subject to the ODbL and attribution requirements. Coordinates in the prototype are discovery markers, not a substitute for official directions or on-site access information.
+
+
+## Implemented identity and persistence
+
+The live backend modules in this branch use Clerk for browser sign-in and server-side token verification. The verified Clerk subject becomes the immutable application owner identifier. The `user_profiles` row defaults to `tourist`; role changes are performed only by guarded moderator/admin endpoints. The initial admin is provisioned through the one-time `scripts/promote-admin.js` CLI script after the owner verifies the Clerk user ID.
+
+The Neon schema includes user profiles, stories, heritage reports, saved trips, contributor requests, moderation events, and shared rate-limit buckets. The SQL migration is checked into `db/migrations/`; it must be applied explicitly using `npm run db:migrate` after verifying `DATABASE_URL`. It is intentionally not run as part of the static deployment build.
+
+## Request and review lifecycle
+
+- Every private endpoint validates the Clerk session bearer token and a configured set of exact authorised origins.
+- User-owned trips, reports, stories and contributor requests are queried by the verified Clerk subject.
+- Community stories default to `pending`; the public story endpoint exposes only `published` records.
+- Reports reference a destination slug from the existing curated catalogue.
+- Submission limits are stored in Postgres rather than local process memory.
+- Moderator/admin decisions and audit events are written in one Neon batch.
+- The browser UI renders user content with DOM text nodes; it does not use raw HTML for submitted content.
+
+The AI guide remains a sample feature, sustainability indicators are illustrative, and private media storage/upload scanning are not enabled.
