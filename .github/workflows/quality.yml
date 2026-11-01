@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  syntax-and-assets:
+  syntax-and-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Check out source
@@ -22,12 +22,20 @@ jobs:
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 24
-      - name: Validate source syntax and required assets
+      - name: Validate required assets and JavaScript syntax
         run: |
           set -euo pipefail
           test -s telangana_heritage_project/frontend/index.html
           test -s telangana_heritage_project/frontend/style.css
           test -s telangana_heritage_project/frontend/app.js
+          test -s telangana_heritage_project/frontend/map.js
+          test -s telangana_heritage_project/frontend/data/destinations.json
           node --check telangana_heritage_project/frontend/app.js
+          node --check telangana_heritage_project/frontend/map.js
           node --check telangana_heritage_project/backend/server.js
+          node --check telangana_heritage_project/api/v1/health.js
+          node --check telangana_heritage_project/api/v1/destinations.js
+          node --check 'telangana_heritage_project/api/v1/destinations/[slug].js'
           git diff --check
+      - name: Run destination API tests
+        run: node --test telangana_heritage_project/tests/*.test.cjs
