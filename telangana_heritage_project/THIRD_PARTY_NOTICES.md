@@ -54,3 +54,16 @@ Where a destination coordinate is identified as Wikidata-derived, the underlying
 ## Destination descriptions and reference data
 
 Destination descriptions link to the official Telangana Tourism portal, the Telangana state investment/tourism policy page, or the relevant district administration tourism page. Coordinate-source links are recorded per destination in `frontend/data/destinations.json`. Coordinates are included as approximate discovery points and should be reviewed before they are used for navigation.
+
+
+## Authentication and database runtime dependencies
+
+| Package | Pinned version | Licence | Purpose |
+| --- | --- | --- | --- |
+| `@clerk/backend` | 3.26.5 | MIT | Server-side Clerk token verification |
+| `@clerk/clerk-js` | 6.42.1 | MIT | Browser session/authentication SDK (loaded from Clerk Frontend API) |
+| `@clerk/ui` | 1.42.2 | MIT | Prebuilt Clerk browser UI bundle |
+| `@neondatabase/serverless` | 1.2.0 | MIT | Neon serverless PostgreSQL driver |
+| `drizzle-orm` | 0.45.4 | Apache-2.0 | Typed SQL/ORM layer |
+
+These exact versions are pinned in `package.json`. Recheck upstream notices and dependency advisories before upgrading.
