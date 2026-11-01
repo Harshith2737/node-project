@@ -1,95 +1,126 @@
-# Telangana Heritage — Sustainable Tourism MVP
+# Telangana Heritage — Full-Stack Platform
 
-A responsive college-project prototype for sustainable tourism and cultural heritage preservation in Telangana.
+A responsive heritage discovery and responsible-tourism platform for Telangana, India. The application combines a static HTML/CSS/JavaScript frontend with authenticated Node.js API routes, Neon PostgreSQL, Clerk authentication and private Vercel Blob storage.
 
-## Frontend
+## Features
 
-The frontend is a static HTML, CSS and JavaScript app. It has no build step. Leaflet 1.9.4 is loaded from a pinned CDN release with Subresource Integrity; the catalogue is JSON and the map uses OpenStreetMap tiles.
+- **Discover:** curated Telangana heritage, nature and cultural destinations, searchable by name, category and district.
+- **Explore on a map:** Leaflet and OpenStreetMap map display, with Google Maps directions handoff.
+- **Plan journeys:** save trip plans and open transport handoffs, including Uber and Rapido where available.
+- **Culture and community:** public published stories, authenticated story contributions, heritage issue reports and moderation workflows.
+- **Private travel memories:** signed-in users can take or upload photos, add captions and destination names, search their own gallery, delete saved memories and export Telangana-themed postcards.
+- **SEO and sharing:** title and description metadata, canonical URL, Open Graph and Twitter metadata, JSON-LD, robots.txt, sitemap, favicon, web manifest and social preview artwork.
+- **Admin and moderation:** role-protected workflows with database-backed role checks and audit events.
 
-To run it locally, either open `frontend/index.html` in a browser or serve the folder:
+## Architecture
+
+- **Frontend:** static HTML, CSS and browser JavaScript under `frontend/`.
+- **API:** Vercel Node.js functions under `api/`.
+- **Authentication:** Clerk browser SDK and server-side session verification.
+- **Database:** Neon PostgreSQL accessed through Drizzle ORM.
+- **Private photo storage:** Vercel Blob private storage. The database stores ownership and photo metadata, not public image URLs.
+- **Deployment:** Vercel Git integration; project root is `telangana_heritage_project`, output directory is `frontend`.
+
+## Run locally
+
+Use Node.js 24.
+
+For the static-only frontend preview:
 
 ```bash
 python -m http.server 8000 --directory frontend
 ```
 
-Then visit `http://localhost:8000`.
+Then visit `http://localhost:8000`. This static-only mode does not run Vercel API functions, authenticated account features or private photo uploads.
 
-### Vercel settings
-
-Deploy the frontend as a static site with these project settings:
-
-- **Root Directory:** `telangana_heritage_project`
-- **Framework Preset:** Other
-- **Build Command:** leave blank / auto
-- **Install Command:** leave blank / auto
-- **Output Directory:** `frontend`
-- **Functions:** files under `api/` are deployed as Node.js Vercel Functions.
-
-The frontend uses `/api/v1/destinations` and falls back to the curated JSON file for local preview. The older Express backend below is not part of the deployed request path.
-
-## Backend prototype (local development only)
-
-The backend is an Express API starter. From this folder:
+For the full application, link the project to the owning Vercel project and pull the development environment into a local, ignored file:
 
 ```bash
-cd backend
-npm init -y
-npm install express cors
-node server.js
-```
-
-Health check: `http://localhost:5000/api/health`.
-
-The backend uses in-memory storage for reports. Data is lost when the process restarts; it currently has no database, authentication, rate limiting or production CORS policy. Do not treat it as a production reporting service.
-
-## Demo limitations
-
-- The destination catalogue includes six curated examples with source links to Telangana Tourism, district administrations and UNESCO; coordinates are approximate discovery markers and must not be treated as official navigation directions.
-- The map uses Leaflet and OpenStreetMap standard tiles. Respect the OpenStreetMap Tile Usage Policy; do not bulk-fetch tiles or implement offline tile downloads.
-- The Telangana Guide searches the reviewed destination catalogue and links to official references. It is retrieval, not generative AI; no model provider is connected.
-- Clerk sign-in is implemented; it requires the connected Clerk application to be configured for the deployed domain.
-- Story submissions, heritage reports, saved trips and contributor requests are stored in Neon after the database migration is applied.
-- The static frontend currently uses its own local destination list and does not call the Express API.
-
-Verify destination facts and sustainability figures against authoritative sources before public use.
-
-## Before production use
-
-Add a persistent database, real authentication and role-based authorization, validated and rate-limited API endpoints, an explicit CORS allow-list, verified destination data, a real map/routing provider, and a reviewed privacy/retention policy.
-
-
-## Managed platform setup
-
-Neon PostgreSQL and Clerk are provisioned through the Vercel Marketplace. The API verifies Clerk session tokens on the server; account roles are read from the database and new accounts default to `tourist`. Do not trust browser-supplied role or owner IDs.
-
-### Local setup and database migration
-
-Run these commands from `telangana_heritage_project` with the Vercel CLI authenticated to the owning team:
-
-```bash
+npm ci
 vercel link --yes --project node-project --scope team_z2jnnFtZIA3yrMTMVOEBkTfK
-npm install
-vercel env pull .env.local --environment production
-npm run db:check
-npm run db:migrate
+vercel env pull .env.local --environment development
 npm run db:check
 npx vercel dev
 ```
 
-The pulled `.env.local` file is ignored by Git. Never commit it or display its contents. For local development, include the exact localhost origin in `APP_ORIGINS`. The checked-in migration is an explicit operation and is not run during a deployment build.
+Open the local URL printed by `vercel dev`. Ensure `APP_ORIGINS` includes the exact localhost origin used by the browser. The `.env.local` file is ignored by Git; never commit it or paste secret values into chat.
 
-### Initial administrator
+Required runtime configuration:
 
-Create the intended administrator account through Clerk, verify its immutable Clerk user ID, then set `INITIAL_ADMIN_CLERK_USER_ID` in the trusted local environment and run:
+- `DATABASE_URL` — Neon database connection.
+- `CLERK_SECRET_KEY` — Clerk server-side secret.
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` — Clerk browser publishable key.
+- `BLOB_READ_WRITE_TOKEN` — Vercel Blob read/write token for the connected private store.
+- `APP_ORIGINS` — comma-separated trusted application origins used for Clerk token verification.
+- `INITIAL_ADMIN_CLERK_USER_ID` — only temporarily, when promoting the intended first administrator.
+
+See `.env.example` for variable names. Do not place real credentials in source control.
+
+## Vercel project setup
+
+Configure the Vercel project as follows:
+
+- **Root Directory:** `telangana_heritage_project`
+- **Framework Preset:** Other
+- **Install Command:** `npm ci`
+- **Build Command:** `npm run build`
+- **Output Directory:** `frontend`
+- **Node.js:** 24.x
+
+The project is connected to a **private** Vercel Blob store in the Mumbai region. Keep `BLOB_READ_WRITE_TOKEN` available in Preview and Production. Do not switch the photo store to public access.
+
+Before the production release, configure Clerk's production instance and use its production publishable and secret keys in Vercel. Verify that `APP_ORIGINS` contains the production domain and any intended custom domain. Do not use development/test Clerk keys for public production sign-in.
+
+## Database migrations
+
+The additive migration `db/migrations/0001_travel_memories.sql` creates the private travel-memory metadata table and owner index.
+
+- The Vercel production build runs Drizzle migrations when `VERCEL_ENV=production`.
+- Preview builds deliberately skip database migrations.
+- For a deliberate manual migration, use `npm run db:migrate` with the intended database URL configured.
+- Use `npm run db:check` to verify database connectivity.
+
+Confirm the target database and backup/restore plan before any production migration. The travel-memory migration adds a new table and index; it does not modify existing destination or user rows.
+
+## Private travel memories and privacy
+
+- Every list, photo-read and delete request requires a valid Clerk session.
+- Database queries are scoped to the authenticated Clerk user ID; the browser cannot select another owner's memory.
+- Photo bytes are stored in private Blob storage and streamed through an authenticated API after ownership checks.
+- Browser-side image re-encoding removes embedded EXIF metadata (including GPS metadata) before upload.
+- Images are resized to a maximum 1,800-pixel long edge and limited to 2 MB after optimisation.
+- The server verifies JPEG/WebP file signatures and rejects SVG and mismatched content.
+- Upload requests are limited to 10 photos per batch and 12 saved uploads per account per hour.
+- The public heritage destination photo gallery is separate from personal travel memories.
+- Users can delete their own memories from the journal.
+
+See [docs/MEMORIES_PRIVACY.md](docs/MEMORIES_PRIVACY.md) for the implementation and safeguards.
+
+## Initial administrator
+
+Create the intended administrator account through Clerk and verify its immutable Clerk user ID. Set `INITIAL_ADMIN_CLERK_USER_ID` in a trusted local environment, then run:
 
 ```bash
 npm run admin:promote
 ```
 
-Remove that temporary variable after use. Only an authorised administrator should be promoted. Moderators can review stories, reports and contributor requests; only admins can assign moderator/admin roles.
+Remove the temporary variable after promotion. Only an authorised administrator should be promoted. Do not trust browser-supplied role or owner IDs.
 
-### Authenticated API modules
+## Quality checks
 
-Private APIs include `GET /api/v1/me`, `GET /api/v1/submissions`, trip create/list, story/report submissions, contributor requests, and moderator/admin review endpoints. Public story reads return only approved (`published`) records. All writes apply input limits and database-backed rate limits; moderation decisions create audit events in the same Neon batch.
+```bash
+npm ci
+npm test
+npm run check
+npm run build
+```
 
-The source-linked guide search is enabled, but a generative AI service is not connected. Sustainability metrics remain illustrative, and private media uploads are not enabled. Apply the database migration and complete the Clerk sign-in/role checks on a protected Vercel preview before using the platform with real visitors.
+The tests cover public APIs, authentication/role controls, guide search, destination data, image upload validation, SEO metadata and memory-page presence. The build skips migrations outside Production.
+
+## Demo limitations and responsible use
+
+- Destination facts, coordinates, visitor details and source links should be reviewed against current authoritative sources before public launch.
+- Sustainability and carbon figures that are labelled illustrative must not be presented as official measurements.
+- Map markers are discovery aids; always follow the destination's official visitor guidance.
+- Google Maps and ride-provider links hand off to external services and do not guarantee route, driver or vehicle availability.
+- The destination catalogue and public story moderation process should be reviewed periodically for accuracy and respectful community representation.
