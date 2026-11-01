@@ -26,7 +26,7 @@ The product is divided into these bounded areas:
 | Sustainability | Verifiable destination indicators and transparent calculation methods | Illustrative values only |
 | Identity and roles | Clerk identity plus database-backed tourist/contributor/moderator/admin roles | Implemented; initial admin requires manual bootstrap |
 | Administration | Review queues, audit trail, role changes and moderation | Implemented in Vercel Functions |
-| AI guide | Retrieval over verified, cited destination content | Demo responses only; no model is connected |
+| Telangana Guide | Search reviewed destination records and return official references | Curated-catalogue retrieval implemented; no generative model is connected |
 
 Do not label an unfinished module as live functionality. In particular, never tell a visitor that a story or issue report has been submitted until it has been durably stored and a reference ID has been returned.
 
@@ -146,4 +146,4 @@ The Neon schema includes user profiles, stories, heritage reports, saved trips, 
 - Moderator/admin decisions and audit events are written in one Neon batch.
 - The browser UI renders user content with DOM text nodes; it does not use raw HTML for submitted content.
 
-The AI guide remains a sample feature, sustainability indicators are illustrative, and private media storage/upload scanning are not enabled.
+The guide performs source-linked search over the reviewed destination catalogue; it does not call a generative model. Sustainability indicators are illustrative, and private media storage/upload scanning are not enabled.
