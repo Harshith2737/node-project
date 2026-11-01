@@ -4,7 +4,7 @@ A responsive college-project prototype for sustainable tourism and cultural heri
 
 ## Frontend
 
-The frontend is a static HTML, CSS and JavaScript app. It has no build step or frontend package dependencies.
+The frontend is a static HTML, CSS and JavaScript app. It has no build step. Leaflet 1.9.4 is loaded from a pinned CDN release with Subresource Integrity; the catalogue is JSON and the map uses OpenStreetMap tiles.
 
 To run it locally, either open `frontend/index.html` in a browser or serve the folder:
 
@@ -18,13 +18,14 @@ Then visit `http://localhost:8000`.
 
 Deploy the frontend as a static site with these project settings:
 
-- **Root Directory:** `telangana_heritage_project/frontend`
+- **Root Directory:** `telangana_heritage_project`
 - **Framework Preset:** Other
 - **Build Command:** leave blank / auto
 - **Install Command:** leave blank / auto
-- **Output Directory:** leave blank / auto
+- **Output Directory:** `frontend`
+- **Functions:** files under `api/` are deployed as Node.js Vercel Functions.
 
-The frontend is the deployable MVP. The Express backend below is a separate local starter and is not connected to the live UI.
+The frontend uses `/api/v1/destinations` and falls back to the curated JSON file for local preview. The older Express backend below is not part of the deployed request path.
 
 ## Backend prototype (local development only)
 
@@ -43,8 +44,8 @@ The backend uses in-memory storage for reports. Data is lost when the process re
 
 ## Demo limitations
 
-- The destination catalogue, map positions and sustainability/carbon values are illustrative demo data.
-- The map is a visual prototype, not a live geographic map or routing service.
+- The destination catalogue includes six curated examples with source links; coordinates are approximate discovery markers and must not be treated as official navigation directions.
+- The map uses Leaflet and OpenStreetMap standard tiles. Respect the OpenStreetMap Tile Usage Policy; do not bulk-fetch tiles or implement offline tile downloads.
 - The AI guide returns local sample responses; no AI service is connected.
 - Login is a visual demo; there is no authentication.
 - Culture contributions and issue reports are not stored or transmitted.
