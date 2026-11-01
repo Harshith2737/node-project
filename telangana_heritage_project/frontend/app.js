@@ -37,6 +37,77 @@ async function loadDestinations() {
   return [];
 }
 
+function routeOptions() {
+  return {
+    origin: $("#tripOrigin")?.value || "",
+    mode: $("#tripTravelMode")?.value || "driving"
+  };
+}
+
+function destinationDirectionsUrl(place) {
+  const { origin, mode } = routeOptions();
+  return window.HeritageMobility.buildGoogleMapsDirectionsUrl([place], origin, mode);
+}
+
+function createExternalLink(label, href, className = "mobility-link") {
+  const link = makeElement("a", className, label);
+  link.href = href;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  return link;
+}
+
+function createCopyDestinationButton(place) {
+  const button = makeElement("button", "mobility-copy", "Copy destination");
+  button.type = "button";
+  button.addEventListener("click", async () => {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+      await navigator.clipboard.writeText(window.HeritageMobility.placeLabel(place));
+      button.textContent = "Copied";
+      button.classList.add("copied");
+      window.setTimeout(() => {
+        button.textContent = "Copy destination";
+        button.classList.remove("copied");
+      }, 1800);
+    } catch {
+      button.textContent = "Copy unavailable";
+    }
+  });
+  return button;
+}
+
+function appendRideOptions(container) {
+  const rides = makeElement("section", "ride-handoff");
+  rides.append(
+    makeElement("h3", "", "Need a cab or auto?"),
+    makeElement("p", "ride-copy", "Copy the destination above, then enter it in the provider app. You will confirm pickup, price and availability there.")
+  );
+  const providers = makeElement("div", "ride-provider-grid");
+  const uber = makeElement("article", "ride-provider");
+  uber.append(
+    makeElement("strong", "", "Uber"),
+    makeElement("p", "", "Enter your pickup and this destination on Uber's official ride page."),
+    createExternalLink("Continue to Uber ↗", "https://www.uber.com/in/en/ride/")
+  );
+  const rapido = makeElement("article", "ride-provider");
+  rapido.append(
+    makeElement("strong", "", "Rapido"),
+    makeElement("p", "", "Check bike, auto and cab service availability in the official app."),
+    createExternalLink("Open Rapido ↗", "https://www.rapido.bike/"),
+    makeElement("div", "app-store-links", "")
+  );
+  const storeLinks = rapido.lastElementChild;
+  storeLinks.append(
+    createExternalLink("Android app ↗", "https://play.google.com/store/apps/details?id=com.rapido.passenger", "mobility-secondary"),
+    createExternalLink("iPhone app ↗", "https://apps.apple.com/in/app/rapido-bike-taxi-auto-cabs/id1198464606", "mobility-secondary")
+  );
+  providers.append(uber, rapido);
+  rides.append(providers);
+  rides.append(makeElement("p", "age-note", "Adult account holders only. Provider age rules apply; passengers under 18 must be accompanied by an adult. Confirm driver details and vehicle number plate before boarding."));
+  container.append(rides);
+}
+
 function renderPlaces() {
   const container = $("#places");
   if (!container) return;
@@ -47,87 +118,149 @@ function renderPlaces() {
   const filtered = places.filter((place) => {
     const matchesCategory = category === "all" || place.category === category;
     const matchesDistrict = district === "all" || place.district === district;
-    const searchable = [place.name,place.district,place.category,place.description,place.circuit].join(" ").toLocaleLowerCase("en-IN");
+    const searchable = [place.name, place.district, place.category, place.description, place.circuit]
+      .join(" ").toLocaleLowerCase("en-IN");
     return matchesCategory && matchesDistrict && (!query || searchable.includes(query));
   });
-  if (sort === "name") filtered.sort((a,b)=>a.name.localeCompare(b.name,"en-IN"));
-  else if (sort === "district") filtered.sort((a,b)=>a.district.localeCompare(b.district,"en-IN")||a.name.localeCompare(b.name,"en-IN"));
-  const counter=$("#resultCount");
-  if(counter) counter.textContent=filtered.length+" of "+places.length+" destinations";
+  if (sort === "name") filtered.sort((a,b) => a.name.localeCompare(b.name,"en-IN"));
+  else if (sort === "district") filtered.sort((a,b) => a.district.localeCompare(b.district,"en-IN") || a.name.localeCompare(b.name,"en-IN"));
+  const counter = $("#resultCount");
+  if (counter) counter.textContent = filtered.length + " of " + places.length + " destinations";
   container.replaceChildren();
-  if(!filtered.length){container.append(makeElement("p","empty-state","No matching destinations. Try another district, category or search term."));return;}
-  for(const place of filtered){
-    const card=makeElement("article","place");
-    const image=makeElement("div","place-img");
-    image.setAttribute("aria-label",place.name+" photo");
-    if(place.imageUrl){
-      const photo=document.createElement("img");
-      photo.src=place.imageUrl;photo.alt=place.imageAlt||(place.name+" destination photo");
-      photo.loading="lazy";photo.decoding="async";
-      photo.addEventListener("error",()=>{
-        photo.remove();image.querySelector(".image-credit")?.remove();image.classList.add("no-photo");
-        image.append(makeElement("span","photo-fallback",place.category+" · "+place.district));
+  if (!filtered.length) {
+    container.append(makeElement("p","empty-state","No matching destinations. Try another district, category or search term."));
+    return;
+  }
+  for (const place of filtered) {
+    const card = makeElement("article","place");
+    const image = makeElement("div","place-img");
+    image.setAttribute("aria-label",place.name + " photo");
+    if (place.imageUrl) {
+      const photo = document.createElement("img");
+      photo.src = place.imageUrl; photo.alt = place.imageAlt || (place.name + " destination photo");
+      photo.loading = "lazy"; photo.decoding = "async";
+      photo.addEventListener("error",() => {
+        photo.remove(); image.querySelector(".image-credit")?.remove(); image.classList.add("no-photo");
+        image.append(makeElement("span","photo-fallback",place.category + " · " + place.district));
       },{once:true});
       image.append(photo);
-      if(place.imageCredit) image.append(makeElement("small","image-credit",place.imageCredit));
-    }else{
-      image.classList.add("no-photo");image.append(makeElement("span","photo-fallback",place.category+" · "+place.district));
+      if (place.imageCredit) image.append(makeElement("small","image-credit",place.imageCredit));
+    } else {
+      image.classList.add("no-photo");
+      image.append(makeElement("span","photo-fallback",place.category + " · " + place.district));
     }
-    const body=makeElement("div","place-body");
-    body.append(makeElement("small","place-meta",place.category+" · "+place.district),makeElement("h3","",place.name),makeElement("p","",place.description));
-    if(place.circuit) body.append(makeElement("small","circuit-label",place.circuit));
-    const actions=makeElement("div","place-actions");
-    const button=makeElement("button","text-button","View details →");button.type="button";button.addEventListener("click",()=>placeInfo(place));
-    const mapLink=makeElement("a","text-button","Map ↗");mapLink.href=place.coordinateSourceUrl;mapLink.target="_blank";mapLink.rel="noopener noreferrer";
-    actions.append(button,mapLink);body.append(actions);card.append(image,body);container.append(card);
+    const body = makeElement("div","place-body");
+    body.append(
+      makeElement("small","place-meta",place.category + " · " + place.district),
+      makeElement("h3","",place.name),
+      makeElement("p","",place.description)
+    );
+    if (place.circuit) body.append(makeElement("small","circuit-label",place.circuit));
+    const actions = makeElement("div","place-actions");
+    const details = makeElement("button","text-button","View details →");
+    details.type = "button";
+    details.addEventListener("click",() => placeInfo(place));
+    const maps = createExternalLink("Directions ↗",destinationDirectionsUrl(place),"text-button");
+    maps.setAttribute("aria-label","Open Google Maps directions to " + place.name);
+    actions.append(details,maps);
+    body.append(actions);
+    card.append(image,body);
+    container.append(card);
   }
 }
 
 function placeInfo(place) {
-  const content=document.createElement("div");content.className="destination-detail";
-  content.append(makeElement("p","place-meta",place.category+" · "+place.district),makeElement("h2","",place.name),makeElement("p","",place.description));
-  if(place.imageUrl){
-    const wrap=makeElement("figure","detail-photo");const photo=document.createElement("img");
-    photo.src=place.imageUrl;photo.alt=place.imageAlt||(place.name+" destination photo");photo.loading="lazy";
-    photo.addEventListener("error",()=>wrap.remove(),{once:true});wrap.append(photo);
-    if(place.imageCredit){
-      const caption=document.createElement("figcaption");
-      caption.append(document.createTextNode(place.imageCredit+" · "));
-      caption.append(document.createTextNode(place.imageChanges||"No changes made to the original photograph."));
-      if(place.imageSourceUrl){const source=makeElement("a","","Photo source");source.href=place.imageSourceUrl;source.target="_blank";source.rel="noopener noreferrer";caption.append(source);}
-      if(place.imageLicenseUrl){caption.append(document.createTextNode(" · "));const licence=makeElement("a","","Licence");licence.href=place.imageLicenseUrl;licence.target="_blank";licence.rel="noopener noreferrer";caption.append(licence);}
+  const content = document.createElement("div");
+  content.className = "destination-detail";
+  content.append(
+    makeElement("p","place-meta",place.category + " · " + place.district),
+    makeElement("h2","",place.name),
+    makeElement("p","",place.description)
+  );
+  if (place.imageUrl) {
+    const wrap = makeElement("figure","detail-photo");
+    const photo = document.createElement("img");
+    photo.src = place.imageUrl;
+    photo.alt = place.imageAlt || (place.name + " destination photo");
+    photo.loading = "lazy";
+    photo.addEventListener("error",() => wrap.remove(),{once:true});
+    wrap.append(photo);
+    if (place.imageCredit) {
+      const caption = document.createElement("figcaption");
+      caption.append(document.createTextNode(place.imageCredit + " · "));
+      caption.append(document.createTextNode(place.imageChanges || "No changes made to the original photograph."));
+      if (place.imageSourceUrl) caption.append(createExternalLink("Photo source",place.imageSourceUrl,""));
+      if (place.imageLicenseUrl) caption.append(createExternalLink("Licence",place.imageLicenseUrl,""));
       wrap.append(caption);
     }
     content.append(wrap);
   }
-  content.append(makeElement("h3","","Responsible visit"),makeElement("p","",place.visitorTip||"Respect local customs and site guidance, avoid litter and support local communities."));
-  const guidance=document.createElement("ul");
-  ["Confirm current opening details, access and local advisories before travelling.","Respect conservation signs, sacred spaces and the privacy of local residents.","Prefer local businesses and lower-impact transport where practical."].forEach(x=>guidance.append(makeElement("li","",x)));
+
+  content.append(
+    makeElement("h3","","Responsible visit"),
+    makeElement("p","",place.visitorTip || "Respect local customs and site guidance, avoid litter and support local communities.")
+  );
+  const guidance = document.createElement("ul");
+  [
+    "Confirm current opening details, access and local advisories before travelling.",
+    "Respect conservation signs, sacred spaces and the privacy of local residents.",
+    "Prefer local businesses and lower-impact transport where practical."
+  ].forEach((item) => guidance.append(makeElement("li","",item)));
   content.append(guidance);
-  const links=makeElement("div","source-links");
-  [["Official tourism / circuit reference",place.officialSourceUrl],["Approximate map location",place.coordinateSourceUrl]].forEach(([label,href])=>{
-    try{const u=new URL(href);if(u.protocol!=="https:")return;const a=makeElement("a","",label);a.href=u.href;a.target="_blank";a.rel="noopener noreferrer";links.append(a);}catch{}
+
+  const gettingThere = makeElement("section","destination-getting-there");
+  gettingThere.append(
+    makeElement("h3","","Get directions"),
+    makeElement("p","","Google Maps opens the destination by name and district. Add a starting point in the trip planner to use the same pickup for route links.")
+  );
+  const directionActions = makeElement("div","mobility-actions");
+  directionActions.append(
+    createExternalLink("Directions in Google Maps ↗",destinationDirectionsUrl(place),"primary"),
+    createCopyDestinationButton(place)
+  );
+  gettingThere.append(directionActions);
+  appendRideOptions(gettingThere);
+  content.append(gettingThere);
+
+  const sourceLinks = makeElement("div","source-links");
+  [
+    ["Official tourism / circuit reference",place.officialSourceUrl],
+    ["Approximate map location",place.coordinateSourceUrl]
+  ].forEach(([label,href]) => {
+    try {
+      const parsed = new URL(href);
+      if (parsed.protocol !== "https:") return;
+      sourceLinks.append(createExternalLink(label,parsed.href,""));
+    } catch {}
   });
-  content.append(links);
-  const button=makeElement("button","primary","Find in trip planner");button.type="button";
-  button.addEventListener("click",()=>{
-    closeModal();$("#plan")?.scrollIntoView({behavior:"smooth"});const select=$("#tripDestination");if(!select)return;
-    select.value=({
+  content.append(sourceLinks);
+
+  const planButton = makeElement("button","primary","Add to trip planning");
+  planButton.type = "button";
+  planButton.addEventListener("click",() => {
+    closeModal();
+    $("#plan")?.scrollIntoView({behavior:"smooth"});
+    const select = $("#tripDestination");
+    if (!select) return;
+    select.value = ({
       Hyderabad:"Hyderabad",Hanamkonda:"Warangal & Mulugu",Warangal:"Warangal & Mulugu",Mulugu:"Warangal & Mulugu","Jayashankar Bhupalpally":"Warangal & Mulugu",
       "Yadadri Bhuvanagiri":"Yadadri & Pochampally","Rajanna Sircilla":"Yadadri & Pochampally",Jagtial:"Yadadri & Pochampally",
       Nirmal:"Adilabad & Basara",Adilabad:"Adilabad & Basara",Medak:"Medak & Sangareddy",Sangareddy:"Medak & Sangareddy",Vikarabad:"Medak & Sangareddy"
-    })[place.district]||"All Telangana";
+    })[place.district] || "All Telangana";
   });
-  content.append(button);openCustom(content);
+  content.append(planButton);
+  openCustom(content);
 }
 
 function generateTrip() {
-  const region=$("#tripDestination")?.value||"All Telangana";
-  const days=Number.parseInt($("#tripDays")?.value||"1",10);
-  const interest=$("#tripInterest")?.value||"Mixed experiences";
-  const pace=$("#tripPace")?.value||"balanced";
-  const startDate=$("#tripStart")?.value||"";
-  const districts={
+  const region = $("#tripDestination")?.value || "All Telangana";
+  const days = Number.parseInt($("#tripDays")?.value || "1",10);
+  const interest = $("#tripInterest")?.value || "Mixed experiences";
+  const pace = $("#tripPace")?.value || "balanced";
+  const startDate = $("#tripStart")?.value || "";
+  const origin = ($("#tripOrigin")?.value || "").trim();
+  const travelMode = $("#tripTravelMode")?.value || "driving";
+  const regionDistricts = {
     "Warangal & Mulugu":["Warangal","Hanamkonda","Mulugu","Jayashankar Bhupalpally"],
     "Hyderabad":["Hyderabad","Rangareddy","Medchal Malkajgiri"],
     "Yadadri & Pochampally":["Yadadri Bhuvanagiri","Rajanna Sircilla","Jagtial"],
@@ -136,22 +269,61 @@ function generateTrip() {
     "South Telangana":["Nalgonda","Jogulamba Gadwal","Nagarkurnool","Mahabubnagar","Wanaparthy"],
     "All Telangana":[]
   };
-  const allowed=districts[region]||[];
-  let candidates=places.filter(p=>!allowed.length||allowed.includes(p.district));
-  const cat={"History & Heritage":"Heritage","Nature":"Nature","Culture & Food":"Culture"}[interest];
-  if(cat&&candidates.some(p=>p.category===cat))candidates=candidates.filter(p=>p.category===cat);
-  if(!candidates.length)candidates=places.slice();
-  const perDay=pace==="relaxed"?1:pace==="active"?3:2;
-  const maxStops=Math.min(days*perDay,candidates.length);
-  const itinerary=$("#itinerary");itinerary.replaceChildren();
-  itinerary.append(makeElement("p","planner-summary",days+"-day "+region+" plan · "+interest+" · "+pace+" pace"+(startDate?" · Starts "+startDate:"")));
-  candidates.slice(0,maxStops).forEach((place,index)=>{
-    const day=Math.floor(index/perDay)+1;const item=makeElement("article","day");
-    item.append(makeElement("small","place-meta","DAY "+day+" · "+place.category+" · "+place.district),makeElement("strong","",place.name),makeElement("p","",place.description),makeElement("p","planner-tip",place.visitorTip||"Confirm current access details and travel conditions before departure."));
-    const link=makeElement("a","text-button","Open map ↗");link.href=place.coordinateSourceUrl;link.target="_blank";link.rel="noopener noreferrer";item.append(link);itinerary.append(item);
+  const allowedDistricts = regionDistricts[region] || [];
+  let candidates = places.filter((place) => !allowedDistricts.length || allowedDistricts.includes(place.district));
+  const interestCategory = {"History & Heritage":"Heritage","Nature":"Nature","Culture & Food":"Culture"}[interest];
+  if (interestCategory && candidates.some((place) => place.category === interestCategory)) {
+    candidates = candidates.filter((place) => place.category === interestCategory);
+  }
+  if (!candidates.length) candidates = places.slice();
+
+  const stopsPerDay = pace === "relaxed" ? 1 : pace === "active" ? 3 : 2;
+  const maxStops = Math.min(days * stopsPerDay,candidates.length);
+  const selected = candidates.slice(0,maxStops);
+  const itinerary = $("#itinerary");
+  itinerary.replaceChildren();
+
+  const summary = days + "-day " + region + " plan · " + interest + " · " + pace + " pace" + (startDate ? " · Starts " + startDate : "");
+  itinerary.append(makeElement("p","planner-summary",summary));
+
+  const grouped = [];
+  selected.forEach((place,index) => {
+    const dayIndex = Math.floor(index / stopsPerDay);
+    if (!grouped[dayIndex]) grouped[dayIndex] = [];
+    grouped[dayIndex].push(place);
   });
-  itinerary.append(makeElement("p","planner-disclaimer","Suggested discovery sequence only. It does not estimate travel times, confirm opening hours or reserve tickets. Check routes and local conditions before departure."));
-  itinerary.append(makeElement("p","planner-save-note","You can save this itinerary after signing in, once your account and database are configured."));
+
+  grouped.forEach((dayPlaces,dayIndex) => {
+    const dayNumber = dayIndex + 1;
+    const dayCard = makeElement("section","day-plan");
+    dayCard.append(
+      makeElement("small","place-meta","DAY " + dayNumber + " · " + dayPlaces.length + " planned stop" + (dayPlaces.length === 1 ? "" : "s")),
+      makeElement("h3","","Day " + dayNumber)
+    );
+    const stopList = makeElement("ol","day-stop-list");
+    dayPlaces.forEach((place) => {
+      const item = document.createElement("li");
+      item.append(
+        makeElement("strong","",place.name),
+        makeElement("span","",place.district + " · " + place.category),
+        makeElement("p","",place.description),
+        makeElement("small","planner-tip",place.visitorTip || "Confirm current access and travel conditions before departure.")
+      );
+      stopList.append(item);
+    });
+    dayCard.append(stopList);
+
+    const routeOrigin = dayIndex === 0 ? origin : window.HeritageMobility.placeLabel(grouped[dayIndex - 1][grouped[dayIndex - 1].length - 1]);
+    const routeUrl = window.HeritageMobility.buildGoogleMapsDirectionsUrl(dayPlaces,routeOrigin,travelMode);
+    const actions = makeElement("div","mobility-actions");
+    actions.append(createExternalLink("Open Day " + dayNumber + " route in Google Maps ↗",routeUrl,"primary"));
+    actions.append(createCopyDestinationButton(dayPlaces[dayPlaces.length - 1]));
+    dayCard.append(actions);
+    itinerary.append(dayCard);
+  });
+
+  itinerary.append(makeElement("p","planner-disclaimer",
+    "Route order is a suggested itinerary, not a live-traffic optimisation. Google Maps calculates navigation; ride providers show their own prices and availability. If no starting point is entered, Maps may use your device location when permitted."));
 }
 
 function calculateCarbon() {
