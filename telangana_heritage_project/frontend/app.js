@@ -200,16 +200,23 @@ function openModal(type) {
     addText("p", "Authentication is not connected yet. This screen is a preview only.");
   } else if (type === "ai") {
     addText("h2", "Telangana Guide");
-    addText("p", "Sample responses only. A live AI guide needs a verified knowledge source and a configured AI service.");
+    addText("p", "Search the reviewed destination catalogue. Each result includes an official reference; this is source-linked search, not an AI-generated answer.");
     const input = makeElement("input");
     input.id = "aiq";
-    input.type = "text";
-    input.maxLength = 240;
-    input.placeholder = "Ask about Hyderabad, Warangal or Pochampally";
-    input.setAttribute("aria-label", "Question for the Telangana guide");
-    const ask = makeElement("button", "primary", "Ask Guide");
+    input.type = "search";
+    input.maxLength = 80;
+    input.placeholder = "Try Ramappa Temple or Hyderabad";
+    input.setAttribute("aria-label", "Search the Telangana destination catalogue");
+    const ask = makeElement("button", "primary", "Search Guide");
+    ask.id = "guideSearchButton";
     ask.type = "button";
     ask.addEventListener("click", aiAnswer);
+    input.addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        void aiAnswer();
+      }
+    });
     content.append(input, ask, makeElement("div", "", ""));
     const output = content.lastElementChild;
     output.id = "aiout";
@@ -242,14 +249,72 @@ function openModal(type) {
   content.append(closeButton);
   openCustom(content);
 }
-function aiAnswer() {
-  const question = ($("#aiq")?.value || "").trim().toLocaleLowerCase("en-IN");
-  const answer = question.includes("warangal")
-    ? "Explore Warangal Fort, Thousand Pillar Temple and Ramappa Temple. Check current visitor information before travelling."
-    : question.includes("hyderabad")
-      ? "Explore Charminar, Chowmahalla Palace, Golconda Fort and Qutb Shahi Tombs."
-      : "The current guide is a local sample. Try asking about Hyderabad, Warangal or Pochampally.";
-  $("#aiout").replaceChildren(makeElement("div", "result", answer));
+async function aiAnswer() {
+  const input = $("#aiq");
+  const output = $("#aiout");
+  const button = $("#guideSearchButton");
+  if (!input || !output || !button) return;
+
+  const question = input.value.trim();
+  output.replaceChildren();
+  if (question.length < 2) {
+    output.append(makeElement("p", "empty-state", "Enter at least two characters, such as a place or district name."));
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "Searching…";
+  output.append(makeElement("p", "empty-state", "Searching reviewed destination records…"));
+
+  try {
+    const response = await fetch("/api/v1/guide?q=" + encodeURIComponent(question), {
+      headers: { Accept: "application/json" }
+    });
+    const payload = await response.json();
+    if (!response.ok) {
+      throw new Error(payload.message || "The guide search could not be completed.");
+    }
+
+    output.replaceChildren();
+    if (!Array.isArray(payload.data) || payload.data.length === 0) {
+      output.append(makeElement("p", "empty-state", "No reviewed destination matched that search. Try Hyderabad, Warangal, Mulugu, Nirmal or Pochampally."));
+      return;
+    }
+
+    output.append(makeElement("p", "guide-disclaimer", payload.message));
+    for (const item of payload.data) {
+      const card = makeElement("article", "guide-result");
+      card.append(
+        makeElement("h3", "", item.name),
+        makeElement("small", "guide-meta", item.district + " · " + item.category),
+        makeElement("p", "", item.description),
+        makeElement("small", "guide-note", item.sourceNotes)
+      );
+
+      const links = makeElement("div", "source-links");
+      if (typeof item.officialSourceUrl === "string" && item.officialSourceUrl.startsWith("https://")) {
+        const official = makeElement("a", "", "Official reference");
+        official.href = item.officialSourceUrl;
+        official.target = "_blank";
+        official.rel = "noopener noreferrer";
+        links.append(official);
+      }
+      if (typeof item.coordinateSourceUrl === "string" && item.coordinateSourceUrl.startsWith("https://")) {
+        const map = makeElement("a", "", "Map reference");
+        map.href = item.coordinateSourceUrl;
+        map.target = "_blank";
+        map.rel = "noopener noreferrer";
+        links.append(map);
+      }
+      if (links.childNodes.length) card.append(links);
+      output.append(card);
+    }
+  } catch (error) {
+    output.replaceChildren(makeElement("p", "empty-state", error.message));
+  } finally {
+    button.disabled = false;
+    button.textContent = "Search Guide";
+  }
 }
 
 function openCustom(content) {
