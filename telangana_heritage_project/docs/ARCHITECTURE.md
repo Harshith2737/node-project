@@ -125,6 +125,6 @@ Before accepting public submissions:
 
 Use upstream packages through their package managers and preserve their licence notices. Do not copy entire repositories or scrape arbitrary source trees. Review each dependency's licence, maintenance status, release history, security advisories and transitive dependencies before adoption.
 
-The current map uses Leaflet (BSD-2-Clause). Map imagery is supplied by OpenStreetMap's tile service, not by Leaflet. Display the required OpenStreetMap attribution, respect the tile usage policy, cache normally, and never bulk-download or scrape map tiles.
+The current map uses Leaflet 1.9.4 (BSD-2-Clause) from a pinned CDN URL with Subresource Integrity. Map imagery is supplied by OpenStreetMap's tile service, not by Leaflet. Display visible OpenStreetMap attribution, keep a valid page referrer, respect response caching, and never bulk-download, scrape, or prefetch map tiles. The public OSM tile service is best-effort and has no SLA; for a widely used production service, select a tile provider with terms and capacity appropriate to the expected traffic.
 
 Destination context is linked to official Telangana government tourism sources. Coordinate reference points are linked per record. Wikidata facts are CC0; OpenStreetMap-derived geographic data is subject to the ODbL and attribution requirements. Coordinates in the prototype are discovery markers, not a substitute for official directions or on-site access information.
