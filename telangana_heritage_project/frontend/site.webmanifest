@@ -1,0 +1,11 @@
+{
+  "name": "Telangana Heritage",
+  "short_name": "TH Heritage",
+  "description": "Explore Telangana's heritage, culture and responsible travel experiences.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f4ee",
+  "theme_color": "#183d31",
+  "icons": [{"src":"/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

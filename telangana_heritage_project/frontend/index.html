@@ -1,143 +1,23 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Telangana Heritage — Sustainable Tourism</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-<meta name="map-tile-url" content="https://tile.openstreetmap.org/{z}/{x}/{y}.png">
-</head>
-<body>
-<header class="topbar">
-  <div class="brand"><span>TH</span><div><b>Telangana Heritage</b><small>Explore • Preserve • Sustain</small></div></div>
-  <nav id="primaryNav" aria-label="Primary navigation"><a href="#explore">Explore</a><a href="#map">Map</a><a href="#plan">Plan Trip</a><a href="#getting-around">Getting there</a><a href="#experiences">Trails</a><a href="#culture">Culture</a><a href="#essentials">Travel Guide</a><a href="#sustain">Sustainability</a><a href="#report">Report</a></nav>
-  <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav">Menu</button>
-  <button class="login" type="button" onclick="openModal('login')">Login</button>
-</header>
-
-<section class="hero">
-  <div class="hero-copy">
-    <div class="pill">TELANGANA • INDIA</div>
-    <h1>Discover Telangana.<br><em>Preserve its legacy.</em></h1>
-    <p>A digital platform for responsible tourism, cultural preservation and community participation across Telangana.</p>
-    <div class="hero-actions"><a class="primary" href="#explore">Explore Heritage</a><button class="secondary" onclick="openModal('ai')">Search Heritage Guide</button></div>
-    <div class="stats"><div><b>21+</b><span>Districts covered</span></div><div><b>44</b><span>Curated places</span></div><div><b>∞</b><span>Stories to preserve</span></div></div>
-  </div>
-  <div class="hero-art">
-    <div class="sun"></div><div class="fort">TELANGANA<br><strong>HERITAGE</strong></div>
-    <div class="art-label"><b>Travel responsibly</b><br>Support local culture & communities</div>
-  </div>
-</section>
-
-<section id="explore">
-  <div class="section-title"><div><span>DISCOVER</span><h2>Explore Telangana</h2></div><p>Find heritage, nature and living culture. Filter destinations and learn before you visit.</p></div>
-  <div class="filters destination-filters"><input id="search" type="search" aria-label="Search destinations" placeholder="Search places, districts or culture..."><select id="category" aria-label="Filter destinations by category"><option value="all">All categories</option><option>Heritage</option><option>Nature</option><option>Culture</option></select><select id="district" aria-label="Filter destinations by district"><option value="all">All districts</option></select><select id="sort" aria-label="Sort destinations"><option value="featured">Featured first</option><option value="name">Name A–Z</option><option value="district">District A–Z</option></select></div>
-  <div class="results-line"><span id="resultCount" aria-live="polite">Loading destinations…</span><button class="text-button" id="clearFilters" type="button">Clear filters</button></div>
-  <div id="places" class="grid"></div>
-</section>
-
-<section id="map" class="dark-section">
-  <div class="section-title inverse"><div><span>DISCOVER ON MAP</span><h2>Telangana Heritage Map</h2></div><p>Browse mapped heritage, nature and craft destinations. Select a marker or a place in the list for sources and visitor context.</p></div>
-  <div class="map-wrap"><div class="map-box" id="mapBox" role="region" aria-label="Map of Telangana destinations"></div><aside class="map-list" id="mapList" aria-label="Mapped destinations"></aside></div>
-  <p class="map-attribution">Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> · <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener noreferrer">Report a map issue</a></p>
-</section>
-
-
-<section id="experiences" class="soft">
-  <div class="section-title"><div><span>CURATED JOURNEYS</span><h2>Explore by experience</h2></div><p>Start with a circuit, then customise it using the destination filters and trip planner.</p></div>
-  <div class="experience-grid">
-    <article class="experience-card"><span class="experience-number">01</span><div><small>FORTS · TEMPLES · CRAFT</small><h3>Kakatiya heritage trail</h3><p>Warangal Fort, Thousand Pillar Temple, Ramappa Temple and the lake-and-forest landscape of Mulugu.</p><button class="secondary" type="button" onclick="applyTrail('Warangal & Mulugu')">Explore this trail →</button></div></article>
-    <article class="experience-card"><span class="experience-number">02</span><div><small>PALACES · MARKETS · HISTORY</small><h3>Hyderabad Deccan trail</h3><p>Charminar, Golconda Fort, Chowmahalla Palace and the city’s living food and craft culture.</p><button class="secondary" type="button" onclick="applyTrail('Hyderabad')">Explore this trail →</button></div></article>
-    <article class="experience-card"><span class="experience-number">03</span><div><small>WATER · FORESTS · HILLS</small><h3>Nature and waterfall trail</h3><p>Laknavaram, Bogatha, Kuntala, Ananthagiri Hills and other nature destinations across the state.</p><button class="secondary" type="button" onclick="applyTrail('Nature')">Explore this trail →</button></div></article>
-    <article class="experience-card"><span class="experience-number">04</span><div><small>HANDLOOM · ORAL CULTURE · FESTIVALS</small><h3>Living culture trail</h3><p>Pochampally Ikat, Basara, Vemulawada, Medaram and community-led cultural experiences.</p><button class="secondary" type="button" onclick="applyTrail('Culture')">Explore this trail →</button></div></article>
-  </div>
-</section>
-<section id="essentials">
-  <div class="section-title"><div><span>PLAN WITH CARE</span><h2>Before you go</h2></div><p>A few essentials for a smoother visit. Always confirm local arrangements with official sources before departure.</p></div>
-  <div class="essentials-grid">
-    <article><span class="essential-icon">◷</span><h3>Check current details</h3><p>Opening days, entry rules, access roads and local advisories can change. Confirm details with the site or official tourism portal before travelling.</p><a href="https://tourism.telangana.gov.in/" target="_blank" rel="noopener noreferrer">Official Telangana Tourism ↗</a></article>
-    <article><span class="essential-icon">♧</span><h3>Respect natural places</h3><p>Use marked trails, keep away from restricted water edges, never feed wildlife and carry reusable water containers.</p><a href="https://www.telangana.gov.in/telangana-tourism/" target="_blank" rel="noopener noreferrer">State tourism overview ↗</a></article>
-    <article><span class="essential-icon">⌂</span><h3>Support local communities</h3><p>Choose locally owned stays, local guides and direct purchases from craft makers. Ask permission before photographing people or private workspaces.</p><a href="https://invest.telangana.gov.in/policy-tourism/" target="_blank" rel="noopener noreferrer">Tourism circuits and policy ↗</a></article>
-    <article><span class="essential-icon">✧</span><h3>Make heritage last</h3><p>Do not touch fragile carvings, write on monuments or remove natural and archaeological objects. Follow signage and conservation staff instructions.</p><a href="https://asi.nic.in/" target="_blank" rel="noopener noreferrer">Archaeological Survey of India ↗</a></article>
-  </div>
-  <div class="season-note"><b>Seasonal note:</b> waterfalls, reservoirs and forest routes can have changing conditions during and after monsoon periods. Check local weather and access notices; never enter fast-flowing water.</div>
-</section>
-
-<section id="plan">
-  <div class="section-title"><div><span>SMART TRAVEL</span><h2>Plan My Trip</h2></div><p>Create a practical itinerary with sustainability in mind.</p></div>
-  <div class="planner">
-    <div class="form-card">
-      <label>Destination</label><select id="tripDestination" aria-label="Trip region"><option>Warangal & Mulugu</option><option>Hyderabad</option><option>Yadadri & Pochampally</option><option>Adilabad & Basara</option><option>Medak & Sangareddy</option><option>South Telangana</option><option>All Telangana</option></select>
-      <label>Duration</label><select id="tripDays" aria-label="Trip duration"><option>1 day</option><option>2 days</option><option>3 days</option><option>4 days</option><option>5 days</option></select>
-      <label>Starting point <span class="optional-label">Optional</span></label><input id="tripOrigin" type="text" maxlength="160" autocomplete="street-address" placeholder="Hotel, airport, station or area" aria-label="Optional route starting point">
-      <label>Route preference</label><select id="tripTravelMode" aria-label="Preferred route mode"><option value="driving">Car</option><option value="transit">Public transport</option><option value="two-wheeler">Two-wheeler</option><option value="walking">Walking</option><option value="bicycling">Cycling</option></select>
-      <label>Interest</label><select id="tripInterest" aria-label="Trip interest"><option>History & Heritage</option><option>Nature</option><option>Culture & Food</option><option>Mixed experiences</option></select>
-      <label>Travel pace</label><select id="tripPace" aria-label="Trip pace"><option value="relaxed">Relaxed</option><option value="balanced" selected>Balanced</option><option value="active">Active</option></select>
-      <label>Start date (optional)</label><input id="tripStart" type="date" aria-label="Optional trip start date">
-      <button class="primary full" onclick="generateTrip()">Generate itinerary</button>
-    </div>
-    <div class="itinerary" id="itinerary"><div class="empty"><span>✦</span><h3>Your itinerary appears here</h3><p>Choose your destination and preferences to generate a sample sustainable trip.</p></div></div>
-  </div>
-</section>
-
-
-<section id="getting-around" class="soft">
-  <div class="section-title"><div><span>GETTING THERE</span><h2>Choose how to get around</h2></div><p>Open directions in Google Maps, or hand off to a ride provider. Each provider handles its own booking, prices and availability.</p></div>
-  <div class="mobility-grid">
-    <article class="mobility-card maps-mobility">
-      <div class="mobility-icon" aria-hidden="true">↗</div><small>ROUTES & NAVIGATION</small><h3>Google Maps</h3>
-      <p>Destination cards and day plans open directions with the place name, district, optional starting point and your selected travel mode.</p>
-      <a class="mobility-link" href="https://www.google.com/maps/dir/?api=1" target="_blank" rel="noopener noreferrer">Open Google Maps ↗</a>
-    </article>
-    <article class="mobility-card">
-      <div class="mobility-icon uber-icon" aria-hidden="true">U</div><small>RIDE-HAILING</small><h3>Uber</h3>
-      <p>Continue to Uber to enter pickup and drop-off details and check the ride types available in your area.</p>
-      <a class="mobility-link" href="https://www.uber.com/in/en/ride/" target="_blank" rel="noopener noreferrer">Open Uber ↗</a>
-      <a class="mobility-secondary" href="https://www.uber.com/in/en/download/" target="_blank" rel="noopener noreferrer">Get the app</a>
-    </article>
-    <article class="mobility-card">
-      <div class="mobility-icon rapido-icon" aria-hidden="true">R</div><small>BIKE · AUTO · CAB</small><h3>Rapido</h3>
-      <p>Use the official app to check whether bike, auto or cab services are offered for your route.</p>
-      <a class="mobility-link" href="https://www.rapido.bike/" target="_blank" rel="noopener noreferrer">Open Rapido ↗</a>
-      <div class="app-store-links"><a href="https://play.google.com/store/apps/details?id=com.rapido.passenger" target="_blank" rel="noopener noreferrer">Android app ↗</a><a href="https://apps.apple.com/in/app/rapido-bike-taxi-auto-cabs/id1198464606" target="_blank" rel="noopener noreferrer">iPhone app ↗</a></div>
-    </article>
-  </div>
-  <p class="mobility-disclaimer"><strong>Age and safety:</strong> Ride-provider accounts have age requirements. Rapido accounts require the account holder to be 18+. Uber accounts also require an adult account holder; passengers under 18 must travel with an adult under Uber's rules. Do not use another person's account or travel alone where the provider requires adult accompaniment. Confirm the driver, vehicle and number plate in the provider app before entering.</p>
-  <p class="mobility-disclaimer">This site does not book rides, confirm driver availability, estimate live fares or share your location with providers. Copy the destination from a place detail and paste it into the provider app.</p>
-</section>
-
-<section id="culture" class="soft">
-  <div class="section-title"><div><span>LIVING HERITAGE</span><h2>Culture Archive</h2></div><p>Preserve stories, crafts, recipes and memories contributed by communities.</p></div>
-  <div class="culture-grid">
-    <article><b>🎨</b><h3>Local Crafts</h3><p>Pochampally Ikat, Cheriyal art, Pembarthi metal craft and more.</p><button onclick="openModal('story')">View archive</button></article>
-    <article><b>🎙️</b><h3>Oral Histories</h3><p>Record and preserve village stories, folk traditions and local memories.</p><button onclick="openModal('story')">Contribute story</button></article>
-    <article><b>🎭</b><h3>Festivals</h3><p>Discover Bathukamma, Bonalu and Telangana's diverse cultural celebrations.</p><button onclick="openModal('festival')">Explore festivals</button></article>
-  </div>
-</section>
-
-<section id="sustain">
-  <div class="section-title"><div><span>TRAVEL RESPONSIBLY</span><h2>Sustainability Centre</h2></div><p>Make better travel choices and help protect the places you visit.</p></div>
-  <div class="sustain-grid">
-    <div class="score-card"><small>DESTINATION SCORE</small><strong>82<span>/100</span></strong><div class="progress"><i></i></div><p>Good sustainability potential</p><ul><li>✓ Local community support</li><li>✓ Heritage preservation</li><li>✓ Low-impact travel options</li></ul></div>
-    <div class="carbon"><h3>Travel Carbon Calculator</h3><p>Estimate the footprint of your journey and compare transport options.</p>
-      <div class="row"><select id="transport" aria-label="Mode of transport"><option>Bus</option><option>Train</option><option>Car</option><option>Bike</option></select><input id="distance" type="number" value="150" min="1" max="10000" step="1" aria-label="Travel distance in kilometres"><span>km</span></div>
-      <button class="primary" onclick="calculateCarbon()">Calculate</button><div id="carbonResult" class="result" aria-live="polite">Illustrative CO₂ estimate: —</div>
-    </div>
-  </div>
-</section>
-
-<section id="report" class="report-section">
-  <div><span>COMMUNITY ACTION</span><h2>Help protect Telangana's heritage.</h2><p>Report litter, vandalism, damage or other issues at a heritage location. Every report helps create a better preservation record.</p></div>
-  <button class="primary" onclick="openModal('report')">Report a Heritage Issue</button>
-</section>
-
-<footer><div><b>Telangana Heritage</b><br><small>Sustainable Tourism & Cultural Heritage Preservation Platform</small></div><div>Explore responsibly · Preserve together<br><small>Destination and photo sources are linked in each place detail.</small></div></footer>
-
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Telangana Heritage dialog"><div class="modal-card"><button class="close" type="button" aria-label="Close dialog" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="map.js"></script>
-<script src="mobility.js"></script>
-<script src="app.js"></script>
-<script src="auth.js"></script>
-<script src="platform.js"></script>
-</body></html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Telangana Heritage | Places, Culture &amp; Travel Guide</title>
+<meta name="description" content="Discover Telangana’s historic sites, forts, temples, crafts and nature trails. Plan routes, explore local culture and save private travel memories.">
+<meta name="application-name" content="Telangana Heritage">
+<meta name="author" content="Telangana Heritage">
+<meta name="theme-color" content="#183d31">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="googlebot" content="index,follow,max-image-preview:large">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Telangana Heritage">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Telangana Heritage — Discover. Experience. Preserve.">
+<meta property="og:description" content="Discover Telangana’s historic places, living culture, nature trails and responsible travel experiences.">
+<meta property="og:url" content="https://tgheritage.vercel.app/">
+<meta property="og:image" content="https://tgheritage.vercel.app/heritage-social-card.png">
+<meta property="og:image:secure_url" content="https://tgheritage.vercel.app/heritage-social-card.png">
+<meta ���q�^

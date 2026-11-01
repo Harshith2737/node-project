@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Telangana Heritage</title>
+  <desc id="desc">Discover Telangana. Preserve its legacy. A sustainable tourism and cultural heritage platform.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#15392f"/><stop offset="1" stop-color="#2e654c"/></linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f4d99b"/><stop offset="1" stop-color="#d9a968"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="940" cy="210" r="132" fill="url(#sun)" opacity=".95"/>
+  <path d="M680 500h450v26H680zM730 500V365h24v135m63 0V335h26v165m64 0V365h24v135m62 0V335h26v165m-258-165 151-128 151 128z" fill="#d9c28f" opacity=".95"/>
+  <path d="M690 370 970 240l180 130" fill="none" stroke="#f5e9c6" stroke-width="13"/>
+  <path d="M0 530q170-40 340 0t340 0 340 0 340 0v100H0z" fill="#0e2e27" opacity=".55"/>
+  <g fill="#f4ebd5">
+    <text x="88" y="120" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="8">EXPLORE Â· PRESERVE Â· SUSTAIN</text>
+    <text x="82" y="260" font-family="Georgia,serif" font-size="82" font-weight="700">Telangana</text>
+    <text x="86" y="348" font-family="Georgia,serif" font-size="78" font-style="italic" fill="#e8c98f">Heritage</text>
+    <text x="90" y="420" font-family="Arial,sans-serif" font¶»§q«^
