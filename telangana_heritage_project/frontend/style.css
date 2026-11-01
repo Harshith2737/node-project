@@ -18,3 +18,10 @@
 .clerk-sign-in{min-height:240px;display:flex;justify-content:center}
 .review-item button{margin:4px 6px 0 0}
 @media(max-width:700px){#activityButton,#reviewQueueButton{padding:8px 9px;font-size:12px}.topbar{gap:8px}}
+
+.guide-result{margin-top:12px;padding:15px;border:1px solid #e5e1d7;border-radius:11px;background:#fff}
+.guide-result h3{margin:0 0 7px;font-size:17px}
+.guide-meta,.guide-note{display:block;color:#69736d;font-size:12px;line-height:1.5;margin:5px 0}
+.guide-result p{color:#4f5b54;font-size:13px;line-height:1.5;margin:8px 0}
+.guide-disclaimer{font-size:12px;line-height:1.5;color:#69736d;margin:12px 0}
+.guide-result .source-links{margin-top:12px}
