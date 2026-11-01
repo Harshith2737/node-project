@@ -4,30 +4,32 @@
     "name": "Charminar",
     "district": "Hyderabad",
     "category": "Heritage",
-    "description": "Hyderabad landmark at the heart of the historic old city. Telangana Tourism identifies Charminar as a landmark built in 1591.",
+    "description": "Hyderabad landmark built in 1591 and a symbol of the city's historic old town and cultural life.",
     "coordinates": {
       "latitude": 17.361607,
       "longitude": 78.474657
     },
-    "coordinateAccuracy": "site",
-    "officialSourceUrl": "https://tourism.telangana.gov.in/",
-    "coordinateSourceUrl": "https://mapcarta.com/33394160",
-    "sourceNotes": "Coordinates are a mapped monument point; the official tourism portal is the source for destination context."
+    "coordinateAccuracy": "approximate-site-reference",
+    "officialSourceUrl": "https://www.tourism.telangana.gov.in/attractions/charminar",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.361607&mlon=78.474657#map=17/17.361607/78.474657",
+    "sourceNotes": "Official destination description from Telangana Tourism. Coordinate is an approximate map reference for the monument.",
+    "sourceReviewedOn": "2026-11-01"
   },
   {
     "slug": "golconda-fort",
     "name": "Golconda Fort",
     "district": "Hyderabad",
     "category": "Heritage",
-    "description": "Historic fort complex in Hyderabad and part of the state's identified heritage-tourism circuit.",
+    "description": "Historic fortress and capital of the medieval Golconda Sultanate, part of Hyderabad's heritage circuit.",
     "coordinates": {
       "latitude": 17.383309,
       "longitude": 78.401053
     },
-    "coordinateAccuracy": "site",
-    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
-    "coordinateSourceUrl": "https://commons.wikimedia.org/wiki/File:Golconda_Fort_-_Map.jpg",
-    "sourceNotes": "The state tourism policy lists Golconda Fort in the Hyderabad–Rangareddy–Medchal heritage cluster. The coordinate is a mapped fort reference point."
+    "coordinateAccuracy": "approximate-site-reference",
+    "officialSourceUrl": "https://www.tourism.telangana.gov.in/customized-musuems-forts",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.383309&mlon=78.401053#map=17/17.383309/78.401053",
+    "sourceNotes": "Official Telangana Tourism page lists Golconda Fort among its museums and forts. Coordinate is an approximate fort reference point.",
+    "sourceReviewedOn": "2026-11-01"
   },
   {
     "slug": "ramappa-temple",
@@ -39,25 +41,27 @@
       "latitude": 18.259133,
       "longitude": 79.943206
     },
-    "coordinateAccuracy": "site",
-    "officialSourceUrl": "https://tourism.telangana.gov.in/page/ramappa",
-    "coordinateSourceUrl": "https://whc.unesco.org/en/list/1570/maps/",
-    "sourceNotes": "Coordinates are taken from the UNESCO World Heritage Centre map record."
+    "coordinateAccuracy": "approximate-site-reference",
+    "officialSourceUrl": "https://whc.unesco.org/en/list/1570/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=18.259133&mlon=79.943206#map=17/18.259133/79.943206",
+    "sourceNotes": "UNESCO World Heritage Centre is the primary heritage source. Coordinate is a mapped site reference; confirm visitor access locally.",
+    "sourceReviewedOn": "2026-11-01"
   },
   {
     "slug": "warangal-fort",
     "name": "Warangal Fort",
     "district": "Warangal",
     "category": "Heritage",
-    "description": "Kakatiya-era fort precinct and one of the heritage destinations highlighted in Telangana's tourism planning.",
+    "description": "Kakatiya-era fort precinct with distinctive gateways and monuments from the medieval capital.",
     "coordinates": {
       "latitude": 17.9572,
       "longitude": 79.6144
     },
-    "coordinateAccuracy": "site",
-    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
-    "coordinateSourceUrl": "https://www.kakatiya.info/sites/warangal-fort",
-    "sourceNotes": "Coordinates are a public mapped reference point for the fort precinct."
+    "coordinateAccuracy": "approximate-site-reference",
+    "officialSourceUrl": "https://warangal.telangana.gov.in/tourist-place/warangal-fort/",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.9572&mlon=79.6144#map=17/17.9572/79.6144",
+    "sourceNotes": "Official Warangal district visitor page. Coordinate is an approximate fort precinct reference point.",
+    "sourceReviewedOn": "2026-11-01"
   },
   {
     "slug": "kuntala-waterfalls",
@@ -69,24 +73,26 @@
       "latitude": 19.285,
       "longitude": 78.503
     },
-    "coordinateAccuracy": "site",
+    "coordinateAccuracy": "approximate-site-reference",
     "officialSourceUrl": "https://adilabad.telangana.gov.in/tourist-place/kuntala-water-falls/",
-    "coordinateSourceUrl": "https://en.wikipedia.org/wiki/Kuntala_Waterfall",
-    "sourceNotes": "Coordinates are a public reference point. Confirm local access and seasonal conditions with district authorities before travel."
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=19.285&mlon=78.503#map=17/19.285/78.503",
+    "sourceNotes": "Official Adilabad district visitor page. Coordinate is an approximate waterfall reference; confirm seasonal access and local conditions.",
+    "sourceReviewedOn": "2026-11-01"
   },
   {
     "slug": "bhoodan-pochampally",
     "name": "Bhoodan Pochampally",
     "district": "Yadadri Bhuvanagiri",
     "category": "Culture",
-    "description": "Handloom destination associated with Pochampally Ikat weaving and included in Telangana's crafts-tourism planning.",
+    "description": "Handloom destination in Yadadri Bhuvanagiri district known for Pochampally Ikat, including traditional double-Ikat weaving.",
     "coordinates": {
       "latitude": 17.34855,
       "longitude": 78.82086
     },
     "coordinateAccuracy": "town-centre",
-    "officialSourceUrl": "https://invest.telangana.gov.in/policy-tourism/",
-    "coordinateSourceUrl": "https://mapcarta.com/N5515818537",
-    "sourceNotes": "The marker is a town-centre reference, not a specific workshop or visitor entrance. Contact local operators for exact locations."
+    "officialSourceUrl": "https://tourism.telangana.gov.in/page/arts-crafts",
+    "coordinateSourceUrl": "https://www.openstreetmap.org/?mlat=17.34855&mlon=78.82086#map=17/17.34855/78.82086",
+    "sourceNotes": "Official Telangana Tourism arts and crafts page. Marker is a town-centre reference, not a specific workshop or visitor entrance.",
+    "sourceReviewedOn": "2026-11-01"
   }
 ]
