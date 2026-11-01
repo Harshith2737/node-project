@@ -14,8 +14,9 @@ module.exports=api(async(req,res)=>{
     throw new HttpError(403,"ADMIN_ROLE_REQUIRED","Only administrators can grant moderator/admin roles.");
   if(target===c.userId&&c.profile.role==="admin"&&role!=="admin")
     throw new HttpError(409,"SELF_DEMOTION_BLOCKED","An administrator cannot remove their own admin role here.");
-  const [existing]=await c.db.select({id:userProfiles.clerkUserId}).from(userProfiles).where(eq(userProfiles.clerkUserId,target)).limit(1);
+  const [existing]=await c.db.select({id:userProfiles.clerkUserId,role:userProfiles.role}).from(userProfiles).where(eq(userProfiles.clerkUserId,target)).limit(1);
   if(!existing)throw new HttpError(404,"USER_NOT_FOUND","User must sign in before a role can be changed.");
+  if(c.profile.role!=="admin"&&["moderator","admin"].includes(existing.role))throw new HttpError(403,"ADMIN_ROLE_REQUIRED","Moderators cannot change moderator or admin accounts.");
   await c.db.batch([
     c.db.update(userProfiles).set({role,updatedAt:new Date()}).where(eq(userProfiles.clerkUserId,target)),
     c.db.insert(moderationEvents).values({actorUserId:c.userId,targetType:"user_role",targetId:target,action:"set_"+role})
