@@ -75,3 +75,48 @@
   .experience-card { grid-template-columns:38px 1fr; padding:18px; }
   .results-line { align-items:flex-start; }
 }
+
+
+/* Getting around: maps and ride-provider hand-off */
+.optional-label { color:var(--muted,#66736a); font-size:.76rem; font-weight:500; text-transform:uppercase; letter-spacing:.06em; }
+.mobility-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.mobility-card { padding:22px; border:1px solid rgba(80,87,73,.16); border-radius:18px; background:#fff; box-shadow:0 8px 26px rgba(24,43,32,.04); }
+.mobility-card small { display:block; margin-top:12px; color:var(--accent,#986b3d); font-size:.68rem; font-weight:800; letter-spacing:.12em; }
+.mobility-card h3 { margin:7px 0 8px; }
+.mobility-card p { color:var(--muted,#66736a); line-height:1.6; font-size:.92rem; }
+.mobility-icon { display:grid; place-items:center; width:42px; height:42px; border-radius:13px; background:#e7eee5; color:#355842; font-size:1.35rem; font-weight:800; }
+.uber-icon { background:#171717; color:#fff; }
+.rapido-icon { background:#fff0e2; color:#aa4b18; }
+.mobility-link { display:inline-flex; align-items:center; gap:6px; margin-top:10px; color:var(--accent,#835a31); font-weight:750; text-decoration:none; }
+.mobility-link:hover,.mobility-secondary:hover { text-decoration:underline; }
+.mobility-secondary,.app-store-links a { display:inline-flex; margin:10px 12px 0 0; color:var(--muted,#59665e); font-size:.82rem; font-weight:650; text-decoration:none; }
+.app-store-links { display:flex; flex-wrap:wrap; gap:4px; }
+.mobility-disclaimer { margin:16px 0 0; color:var(--muted,#66736a); font-size:.84rem; line-height:1.65; }
+.destination-getting-there { margin:22px 0; padding:20px; border-radius:16px; background:#f4f5ef; }
+.destination-getting-there h3 { margin-top:0; }
+.destination-getting-there > p,.ride-copy { color:var(--muted,#66736a); line-height:1.55; }
+.mobility-actions { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:12px 0; }
+.mobility-copy { border:1px solid rgba(65,82,67,.25); border-radius:999px; padding:10px 15px; color:#365642; background:#fff; font:inherit; font-weight:700; cursor:pointer; }
+.mobility-copy.copied { border-color:#47734f; background:#eaf2e8; }
+.ride-handoff { margin-top:22px; }
+.ride-handoff h3 { margin-bottom:6px; }
+.ride-provider-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.ride-provider { padding:16px; border:1px solid rgba(65,82,67,.16); border-radius:14px; background:#fff; }
+.ride-provider strong { font-size:1rem; }
+.ride-provider p { color:var(--muted,#66736a); font-size:.86rem; line-height:1.5; }
+.age-note { margin-top:12px; padding:12px 14px; border-left:3px solid #bb8c55; background:#fff8ed; color:#6b583f; border-radius:0 9px 9px 0; font-size:.8rem; line-height:1.55; }
+.day-plan { margin:12px 0; padding:18px; border:1px solid rgba(65,82,67,.16); border-radius:16px; background:#fff; }
+.day-plan h3 { margin:5px 0 12px; }
+.day-stop-list { padding-left:22px; }
+.day-stop-list li { margin:12px 0; padding-left:4px; }
+.day-stop-list li > strong,.day-stop-list li > span { display:block; }
+.day-stop-list li > span { color:var(--muted,#66736a); font-size:.8rem; margin-top:3px; }
+.day-stop-list li > p { margin:6px 0; line-height:1.55; }
+.day-stop-list .planner-tip { display:block; }
+@media (max-width:900px) { .mobility-grid { grid-template-columns:1fr 1fr; } }
+@media (max-width:620px) {
+  .mobility-grid,.ride-provider-grid { grid-template-columns:1fr; }
+  .destination-getting-there { padding:16px; }
+  .mobility-actions { align-items:stretch; }
+  .mobility-actions .primary,.mobility-actions .mobility-copy { justify-content:center; }
+}

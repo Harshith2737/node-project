@@ -10,7 +10,7 @@
 <body>
 <header class="topbar">
   <div class="brand"><span>TH</span><div><b>Telangana Heritage</b><small>Explore • Preserve • Sustain</small></div></div>
-  <nav id="primaryNav" aria-label="Primary navigation"><a href="#explore">Explore</a><a href="#map">Map</a><a href="#plan">Plan Trip</a><a href="#experiences">Trails</a><a href="#culture">Culture</a><a href="#essentials">Travel Guide</a><a href="#sustain">Sustainability</a><a href="#report">Report</a></nav>
+  <nav id="primaryNav" aria-label="Primary navigation"><a href="#explore">Explore</a><a href="#map">Map</a><a href="#plan">Plan Trip</a><a href="#getting-around">Getting there</a><a href="#experiences">Trails</a><a href="#culture">Culture</a><a href="#essentials">Travel Guide</a><a href="#sustain">Sustainability</a><a href="#report">Report</a></nav>
   <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav">Menu</button>
   <button class="login" type="button" onclick="openModal('login')">Login</button>
 </header>
@@ -69,6 +69,8 @@
     <div class="form-card">
       <label>Destination</label><select id="tripDestination" aria-label="Trip region"><option>Warangal & Mulugu</option><option>Hyderabad</option><option>Yadadri & Pochampally</option><option>Adilabad & Basara</option><option>Medak & Sangareddy</option><option>South Telangana</option><option>All Telangana</option></select>
       <label>Duration</label><select id="tripDays" aria-label="Trip duration"><option>1 day</option><option>2 days</option><option>3 days</option><option>4 days</option><option>5 days</option></select>
+      <label>Starting point <span class="optional-label">Optional</span></label><input id="tripOrigin" type="text" maxlength="160" autocomplete="street-address" placeholder="Hotel, airport, station or area" aria-label="Optional route starting point">
+      <label>Route preference</label><select id="tripTravelMode" aria-label="Preferred route mode"><option value="driving">Car</option><option value="transit">Public transport</option><option value="two-wheeler">Two-wheeler</option><option value="walking">Walking</option><option value="bicycling">Cycling</option></select>
       <label>Interest</label><select id="tripInterest" aria-label="Trip interest"><option>History & Heritage</option><option>Nature</option><option>Culture & Food</option><option>Mixed experiences</option></select>
       <label>Travel pace</label><select id="tripPace" aria-label="Trip pace"><option value="relaxed">Relaxed</option><option value="balanced" selected>Balanced</option><option value="active">Active</option></select>
       <label>Start date (optional)</label><input id="tripStart" type="date" aria-label="Optional trip start date">
@@ -76,6 +78,32 @@
     </div>
     <div class="itinerary" id="itinerary"><div class="empty"><span>✦</span><h3>Your itinerary appears here</h3><p>Choose your destination and preferences to generate a sample sustainable trip.</p></div></div>
   </div>
+</section>
+
+
+<section id="getting-around" class="soft">
+  <div class="section-title"><div><span>GETTING THERE</span><h2>Choose how to get around</h2></div><p>Open directions in Google Maps, or hand off to a ride provider. Each provider handles its own booking, prices and availability.</p></div>
+  <div class="mobility-grid">
+    <article class="mobility-card maps-mobility">
+      <div class="mobility-icon" aria-hidden="true">↗</div><small>ROUTES & NAVIGATION</small><h3>Google Maps</h3>
+      <p>Destination cards and day plans open directions with the place name, district, optional starting point and your selected travel mode.</p>
+      <a class="mobility-link" href="https://www.google.com/maps/dir/?api=1" target="_blank" rel="noopener noreferrer">Open Google Maps ↗</a>
+    </article>
+    <article class="mobility-card">
+      <div class="mobility-icon uber-icon" aria-hidden="true">U</div><small>RIDE-HAILING</small><h3>Uber</h3>
+      <p>Continue to Uber to enter pickup and drop-off details and check the ride types available in your area.</p>
+      <a class="mobility-link" href="https://www.uber.com/in/en/ride/" target="_blank" rel="noopener noreferrer">Open Uber ↗</a>
+      <a class="mobility-secondary" href="https://www.uber.com/in/en/download/" target="_blank" rel="noopener noreferrer">Get the app</a>
+    </article>
+    <article class="mobility-card">
+      <div class="mobility-icon rapido-icon" aria-hidden="true">R</div><small>BIKE · AUTO · CAB</small><h3>Rapido</h3>
+      <p>Use the official app to check whether bike, auto or cab services are offered for your route.</p>
+      <a class="mobility-link" href="https://www.rapido.bike/" target="_blank" rel="noopener noreferrer">Open Rapido ↗</a>
+      <div class="app-store-links"><a href="https://play.google.com/store/apps/details?id=com.rapido.passenger" target="_blank" rel="noopener noreferrer">Android app ↗</a><a href="https://apps.apple.com/in/app/rapido-bike-taxi-auto-cabs/id1198464606" target="_blank" rel="noopener noreferrer">iPhone app ↗</a></div>
+    </article>
+  </div>
+  <p class="mobility-disclaimer"><strong>Age and safety:</strong> Ride-provider accounts have age requirements. Rapido accounts require the account holder to be 18+. Uber accounts also require an adult account holder; passengers under 18 must travel with an adult under Uber's rules. Do not use another person's account or travel alone where the provider requires adult accompaniment. Confirm the driver, vehicle and number plate in the provider app before entering.</p>
+  <p class="mobility-disclaimer">This site does not book rides, confirm driver availability, estimate live fares or share your location with providers. Copy the destination from a place detail and paste it into the provider app.</p>
 </section>
 
 <section id="culture" class="soft">
@@ -108,6 +136,7 @@
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Telangana Heritage dialog"><div class="modal-card"><button class="close" type="button" aria-label="Close dialog" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="map.js"></script>
+<script src="mobility.js"></script>
 <script src="app.js"></script>
 <script src="auth.js"></script>
 <script src="platform.js"></script>
