@@ -25,3 +25,53 @@
 .guide-result p{color:#4f5b54;font-size:13px;line-height:1.5;margin:8px 0}
 .guide-disclaimer{font-size:12px;line-height:1.5;color:#69736d;margin:12px 0}
 .guide-result .source-links{margin-top:12px}
+
+
+/* Destination catalogue and travel modules */
+.destination-filters { display:grid; grid-template-columns:minmax(220px,2fr) repeat(3,minmax(150px,1fr)); gap:12px; }
+.results-line { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:14px 0 20px; color:var(--muted,#6b7280); font-size:.9rem; }
+.place { overflow:hidden; display:flex; flex-direction:column; min-height:100%; }
+.place-img { position:relative; min-height:210px; height:210px; overflow:hidden; background:linear-gradient(135deg,#d7c5a2,#8fa08a 55%,#344d45); }
+.place-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .45s ease; }
+.place:hover .place-img img { transform:scale(1.04); }
+.place-img.no-photo { display:grid; place-items:center; background:linear-gradient(135deg,#e7ddc9,#a7b9a5 55%,#526e61); }
+.photo-fallback { color:#213c32; font-family:Georgia,serif; font-size:1.05rem; letter-spacing:.06em; text-transform:uppercase; padding:24px; }
+.image-credit { position:absolute; left:0; bottom:0; max-width:100%; padding:5px 8px; color:#fff; background:rgba(17,30,25,.76); font-size:.65rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.place-body { display:flex; flex-direction:column; flex:1; }
+.place-meta { display:block; color:var(--accent,#a66f39); font-size:.72rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase; }
+.circuit-label { display:inline-block; margin-top:auto; padding-top:12px; color:var(--muted,#6b7280); font-size:.76rem; }
+.place-actions { display:flex; align-items:center; gap:16px; margin-top:14px; }
+.text-button { border:0; padding:0; background:transparent; color:var(--accent,#8a5a2b); text-decoration:none; font:inherit; font-weight:700; cursor:pointer; }
+.text-button:hover { text-decoration:underline; }
+.destination-detail .detail-photo { margin:18px 0; }
+.detail-photo img { display:block; width:100%; max-height:300px; object-fit:cover; border-radius:14px; }
+.detail-photo figcaption { margin-top:7px; font-size:.75rem; color:var(--muted,#6b7280); }
+.detail-photo figcaption a { color:inherit; text-decoration:underline; }
+.source-links { display:flex; flex-wrap:wrap; gap:14px; margin:16px 0; }
+.source-links a { color:var(--accent,#8a5a2b); font-weight:650; }
+.experience-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.experience-card { display:grid; grid-template-columns:54px 1fr; gap:14px; align-items:start; padding:24px; border:1px solid rgba(80,87,73,.15); border-radius:18px; background:rgba(255,255,255,.78); }
+.experience-number { color:var(--accent,#9a6838); font:2rem Georgia,serif; }
+.experience-card small { color:var(--accent,#9a6838); font-weight:750; letter-spacing:.12em; font-size:.68rem; }
+.experience-card h3 { margin:8px 0; }
+.experience-card p { color:var(--muted,#66736a); line-height:1.65; }
+.essentials-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.essentials-grid article { padding:22px; border:1px solid rgba(80,87,73,.16); border-radius:16px; background:#fff; }
+.essentials-grid h3 { margin:10px 0 8px; }
+.essentials-grid p { color:var(--muted,#66736a); line-height:1.65; font-size:.91rem; }
+.essentials-grid a { display:inline-block; margin-top:8px; color:var(--accent,#8a5a2b); font-weight:700; font-size:.85rem; }
+.essential-icon { display:inline-grid; place-items:center; width:38px; height:38px; border-radius:50%; background:#e8ede5; color:#43594b; font-size:1.25rem; }
+.season-note { margin-top:18px; padding:18px 20px; border-left:3px solid #a77a47; background:#f3f0e8; color:#596158; line-height:1.6; border-radius:0 12px 12px 0; }
+.planner-summary { color:var(--accent,#8a5a2b); font-weight:700; }
+.planner-tip { padding:10px 12px; border-radius:10px; background:#f2f3ed; color:#5b695f; font-size:.88rem; }
+.planner-disclaimer,.planner-save-note { color:var(--muted,#6b7280); font-size:.82rem; line-height:1.6; }
+@media (max-width:900px) {
+  .destination-filters { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .essentials-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:620px) {
+  .destination-filters,.experience-grid,.essentials-grid { grid-template-columns:1fr; }
+  .place-img { height:190px; min-height:190px; }
+  .experience-card { grid-template-columns:38px 1fr; padding:18px; }
+  .results-line { align-items:flex-start; }
+}

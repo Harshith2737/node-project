@@ -40,137 +40,118 @@ async function loadDestinations() {
 function renderPlaces() {
   const container = $("#places");
   if (!container) return;
-
   const query = ($("#search")?.value || "").trim().toLocaleLowerCase("en-IN");
   const category = $("#category")?.value || "all";
+  const district = $("#district")?.value || "all";
+  const sort = $("#sort")?.value || "featured";
   const filtered = places.filter((place) => {
     const matchesCategory = category === "all" || place.category === category;
-    const searchable = [place.name, place.district, place.category, place.description]
-      .join(" ").toLocaleLowerCase("en-IN");
-    return matchesCategory && (!query || searchable.includes(query));
+    const matchesDistrict = district === "all" || place.district === district;
+    const searchable = [place.name,place.district,place.category,place.description,place.circuit].join(" ").toLocaleLowerCase("en-IN");
+    return matchesCategory && matchesDistrict && (!query || searchable.includes(query));
   });
-
+  if (sort === "name") filtered.sort((a,b)=>a.name.localeCompare(b.name,"en-IN"));
+  else if (sort === "district") filtered.sort((a,b)=>a.district.localeCompare(b.district,"en-IN")||a.name.localeCompare(b.name,"en-IN"));
+  const counter=$("#resultCount");
+  if(counter) counter.textContent=filtered.length+" of "+places.length+" destinations";
   container.replaceChildren();
-  if (filtered.length === 0) {
-    container.append(makeElement("p", "empty-state", "No matching destinations found."));
-    return;
-  }
-
-  for (const place of filtered) {
-    const card = makeElement("article", "place");
-    const image = makeElement("div", "place-img");
-    image.append(makeElement("small", "", place.category + " • " + place.district));
-
-    const body = makeElement("div", "place-body");
-    body.append(
-      makeElement("h3", "", place.name),
-      makeElement("p", "", place.description)
-    );
-    const button = makeElement("button", "", "View details →");
-    button.type = "button";
-    button.addEventListener("click", () => placeInfo(place));
-    body.append(button);
-    card.append(image, body);
-    container.append(card);
+  if(!filtered.length){container.append(makeElement("p","empty-state","No matching destinations. Try another district, category or search term."));return;}
+  for(const place of filtered){
+    const card=makeElement("article","place");
+    const image=makeElement("div","place-img");
+    image.setAttribute("aria-label",place.name+" photo");
+    if(place.imageUrl){
+      const photo=document.createElement("img");
+      photo.src=place.imageUrl;photo.alt=place.imageAlt||(place.name+" destination photo");
+      photo.loading="lazy";photo.decoding="async";
+      photo.addEventListener("error",()=>{
+        photo.remove();image.querySelector(".image-credit")?.remove();image.classList.add("no-photo");
+        image.append(makeElement("span","photo-fallback",place.category+" · "+place.district));
+      },{once:true});
+      image.append(photo);
+      if(place.imageCredit) image.append(makeElement("small","image-credit",place.imageCredit));
+    }else{
+      image.classList.add("no-photo");image.append(makeElement("span","photo-fallback",place.category+" · "+place.district));
+    }
+    const body=makeElement("div","place-body");
+    body.append(makeElement("small","place-meta",place.category+" · "+place.district),makeElement("h3","",place.name),makeElement("p","",place.description));
+    if(place.circuit) body.append(makeElement("small","circuit-label",place.circuit));
+    const actions=makeElement("div","place-actions");
+    const button=makeElement("button","text-button","View details →");button.type="button";button.addEventListener("click",()=>placeInfo(place));
+    const mapLink=makeElement("a","text-button","Map ↗");mapLink.href=place.coordinateSourceUrl;mapLink.target="_blank";mapLink.rel="noopener noreferrer";
+    actions.append(button,mapLink);body.append(actions);card.append(image,body);container.append(card);
   }
 }
 
 function placeInfo(place) {
-  const content = document.createElement("div");
-  content.append(
-    makeElement("h2", "", place.name),
-    makeElement("p", "", place.district + " • " + place.category),
-    makeElement("p", "", place.description),
-    makeElement("h3", "", "Responsible visit")
-  );
-
-  const guidance = document.createElement("ul");
-  [
-    "Respect local customs and heritage rules.",
-    "Avoid litter and single-use plastic.",
-    "Prefer local businesses and lower-impact transport."
-  ].forEach((item) => guidance.append(makeElement("li", "", item)));
+  const content=document.createElement("div");content.className="destination-detail";
+  content.append(makeElement("p","place-meta",place.category+" · "+place.district),makeElement("h2","",place.name),makeElement("p","",place.description));
+  if(place.imageUrl){
+    const wrap=makeElement("figure","detail-photo");const photo=document.createElement("img");
+    photo.src=place.imageUrl;photo.alt=place.imageAlt||(place.name+" destination photo");photo.loading="lazy";
+    photo.addEventListener("error",()=>wrap.remove(),{once:true});wrap.append(photo);
+    if(place.imageCredit){
+      const caption=document.createElement("figcaption");
+      caption.append(document.createTextNode(place.imageCredit+" · "));
+      caption.append(document.createTextNode(place.imageChanges||"No changes made to the original photograph."));
+      if(place.imageSourceUrl){const source=makeElement("a","","Photo source");source.href=place.imageSourceUrl;source.target="_blank";source.rel="noopener noreferrer";caption.append(source);}
+      if(place.imageLicenseUrl){caption.append(document.createTextNode(" · "));const licence=makeElement("a","","Licence");licence.href=place.imageLicenseUrl;licence.target="_blank";licence.rel="noopener noreferrer";caption.append(licence);}
+      wrap.append(caption);
+    }
+    content.append(wrap);
+  }
+  content.append(makeElement("h3","","Responsible visit"),makeElement("p","",place.visitorTip||"Respect local customs and site guidance, avoid litter and support local communities."));
+  const guidance=document.createElement("ul");
+  ["Confirm current opening details, access and local advisories before travelling.","Respect conservation signs, sacred spaces and the privacy of local residents.","Prefer local businesses and lower-impact transport where practical."].forEach(x=>guidance.append(makeElement("li","",x)));
   content.append(guidance);
-
-  const sourceLinks = document.createElement("div");
-  sourceLinks.className = "source-links";
-  [
-    ["Official destination information", place.officialSourceUrl],
-    ["Coordinate reference", place.coordinateSourceUrl]
-  ].forEach(([label, href]) => {
-    try {
-      const parsed = new URL(href);
-      if (parsed.protocol !== "https:") return;
-      const link = makeElement("a", "", label);
-      link.href = parsed.href;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      sourceLinks.append(link);
-    } catch {
-      // Invalid source URLs are omitted rather than rendered as links.
-    }
+  const links=makeElement("div","source-links");
+  [["Official tourism / circuit reference",place.officialSourceUrl],["Approximate map location",place.coordinateSourceUrl]].forEach(([label,href])=>{
+    try{const u=new URL(href);if(u.protocol!=="https:")return;const a=makeElement("a","",label);a.href=u.href;a.target="_blank";a.rel="noopener noreferrer";links.append(a);}catch{}
   });
-  content.append(sourceLinks);
-
-  const planButton = makeElement("button", "primary", "Plan a visit");
-  planButton.type = "button";
-  planButton.addEventListener("click", () => {
-    closeModal();
-    $("#plan")?.scrollIntoView({ behavior: "smooth" });
-    const destinationSelect = $("#tripDestination");
-    if (destinationSelect) {
-      const district = place.district;
-      const city = district === "Mulugu" || district === "Warangal" ? "Warangal"
-        : district === "Hyderabad" ? "Hyderabad"
-        : district === "Yadadri Bhuvanagiri" ? "Yadadri"
-        : district === "Nirmal" ? "Adilabad" : "";
-      if (city) destinationSelect.value = city;
-    }
+  content.append(links);
+  const button=makeElement("button","primary","Find in trip planner");button.type="button";
+  button.addEventListener("click",()=>{
+    closeModal();$("#plan")?.scrollIntoView({behavior:"smooth"});const select=$("#tripDestination");if(!select)return;
+    select.value=({
+      Hyderabad:"Hyderabad",Hanamkonda:"Warangal & Mulugu",Warangal:"Warangal & Mulugu",Mulugu:"Warangal & Mulugu","Jayashankar Bhupalpally":"Warangal & Mulugu",
+      "Yadadri Bhuvanagiri":"Yadadri & Pochampally","Rajanna Sircilla":"Yadadri & Pochampally",Jagtial:"Yadadri & Pochampally",
+      Nirmal:"Adilabad & Basara",Adilabad:"Adilabad & Basara",Medak:"Medak & Sangareddy",Sangareddy:"Medak & Sangareddy",Vikarabad:"Medak & Sangareddy"
+    })[place.district]||"All Telangana";
   });
-  content.append(planButton);
-  openCustom(content);
+  content.append(button);openCustom(content);
 }
 
 function generateTrip() {
-  const destination = $("#tripDestination").value;
-  const days = Number.parseInt($("#tripDays").value, 10);
-  const interest = $("#tripInterest").value;
-
-  const plans = {
-    Warangal: [
-      ["Day 1", "Warangal Fort → Thousand Pillar Temple", "Use local transport, carry a reusable bottle and support local food vendors."],
-      ["Day 2", "Ramappa Temple → Ramappa Lake", "Visit respectfully and learn about Kakatiya heritage."],
-      ["Day 3", "Local craft & food experience", "Choose local artisans and keep your visit low-waste."]
-    ],
-    Hyderabad: [
-      ["Day 1", "Charminar → Chowmahalla Palace → Laad Bazaar", "Walk between nearby attractions where practical and support local shops."],
-      ["Day 2", "Golconda Fort → Qutb Shahi Tombs", "Use shared transport and follow site preservation rules."],
-      ["Day 3", "Museums + local food trail", "Explore living culture and choose local businesses."]
-    ],
-    Yadadri: [
-      ["Day 1", "Yadadri Temple → Bhongir Fort", "Respect religious spaces and avoid disposable plastics."],
-      ["Day 2", "Pochampally handloom experience", "Learn about Ikat and purchase directly from local makers."],
-      ["Day 3", "Village & food experience", "Choose community-led experiences."]
-    ],
-    Adilabad: [
-      ["Day 1", "Kuntala Waterfalls → nearby nature sites", "Stay on marked paths and carry all waste back."],
-      ["Day 2", "Local culture & crafts", "Support local producers and guides."],
-      ["Day 3", "Eco-tourism day", "Prefer small-group, low-impact activities."]
-    ]
+  const region=$("#tripDestination")?.value||"All Telangana";
+  const days=Number.parseInt($("#tripDays")?.value||"1",10);
+  const interest=$("#tripInterest")?.value||"Mixed experiences";
+  const pace=$("#tripPace")?.value||"balanced";
+  const startDate=$("#tripStart")?.value||"";
+  const districts={
+    "Warangal & Mulugu":["Warangal","Hanamkonda","Mulugu","Jayashankar Bhupalpally"],
+    "Hyderabad":["Hyderabad","Rangareddy","Medchal Malkajgiri"],
+    "Yadadri & Pochampally":["Yadadri Bhuvanagiri","Rajanna Sircilla","Jagtial"],
+    "Adilabad & Basara":["Nirmal","Adilabad","Mancherial","Kumuram Bheem Asifabad"],
+    "Medak & Sangareddy":["Medak","Sangareddy","Vikarabad"],
+    "South Telangana":["Nalgonda","Jogulamba Gadwal","Nagarkurnool","Mahabubnagar","Wanaparthy"],
+    "All Telangana":[]
   };
-
-  const itinerary = $("#itinerary");
-  itinerary.replaceChildren();
-  (plans[destination] || plans.Warangal).slice(0, days).forEach(([day, title, description]) => {
-    const item = makeElement("div", "day");
-    item.append(
-      makeElement("b", "", day),
-      makeElement("strong", "", title),
-      makeElement("p", "", description)
-    );
-    itinerary.append(item);
+  const allowed=districts[region]||[];
+  let candidates=places.filter(p=>!allowed.length||allowed.includes(p.district));
+  const cat={"History & Heritage":"Heritage","Nature":"Nature","Culture & Food":"Culture"}[interest];
+  if(cat&&candidates.some(p=>p.category===cat))candidates=candidates.filter(p=>p.category===cat);
+  if(!candidates.length)candidates=places.slice();
+  const perDay=pace==="relaxed"?1:pace==="active"?3:2;
+  const maxStops=Math.min(days*perDay,candidates.length);
+  const itinerary=$("#itinerary");itinerary.replaceChildren();
+  itinerary.append(makeElement("p","planner-summary",days+"-day "+region+" plan · "+interest+" · "+pace+" pace"+(startDate?" · Starts "+startDate:"")));
+  candidates.slice(0,maxStops).forEach((place,index)=>{
+    const day=Math.floor(index/perDay)+1;const item=makeElement("article","day");
+    item.append(makeElement("small","place-meta","DAY "+day+" · "+place.category+" · "+place.district),makeElement("strong","",place.name),makeElement("p","",place.description),makeElement("p","planner-tip",place.visitorTip||"Confirm current access details and travel conditions before departure."));
+    const link=makeElement("a","text-button","Open map ↗");link.href=place.coordinateSourceUrl;link.target="_blank";link.rel="noopener noreferrer";item.append(link);itinerary.append(item);
   });
-  itinerary.append(makeElement("p", "", "Interest: " + interest + " • Style: sustainable travel"));
+  itinerary.append(makeElement("p","planner-disclaimer","Suggested discovery sequence only. It does not estimate travel times, confirm opening hours or reserve tickets. Check routes and local conditions before departure."));
+  itinerary.append(makeElement("p","planner-save-note","You can save this itinerary after signing in, once your account and database are configured."));
 }
 
 function calculateCarbon() {
@@ -341,6 +322,9 @@ function closeModal() {
 function installInteractions() {
   $("#search").addEventListener("input", renderPlaces);
   $("#category").addEventListener("change", renderPlaces);
+  $("#district")?.addEventListener("change", renderPlaces);
+  $("#sort")?.addEventListener("change", renderPlaces);
+  $("#clearFilters")?.addEventListener("click",()=>{$("#search").value="";$("#category").value="all";if($("#district"))$("#district").value="all";if($("#sort"))$("#sort").value="featured";renderPlaces();});
   $("#modal").addEventListener("click", (event) => {
     if (event.target.id === "modal") closeModal();
   });
@@ -378,6 +362,8 @@ function installInteractions() {
 async function init() {
   installInteractions();
   places = await loadDestinations();
+  const districtSelect=$("#district");
+  if(districtSelect){const districts=[...new Set(places.map(p=>p.district))].sort((a,b)=>a.localeCompare(b,"en-IN"));districtSelect.replaceChildren(new Option("All districts","all"),...districts.map(d=>new Option(d,d)));}
   renderPlaces();
   if (window.TelanganaHeritageMap) window.TelanganaHeritageMap.render(places);
   else {
@@ -392,4 +378,10 @@ window.generateTrip = generateTrip;
 window.calculateCarbon = calculateCarbon;
 window.aiAnswer = aiAnswer;
 window.renderPlaces = renderPlaces;
+window.applyTrail = (value) => {
+  const select=$("#tripDestination");
+  const regions=["Warangal & Mulugu","Hyderabad","Yadadri & Pochampally","Adilabad & Basara","Medak & Sangareddy","South Telangana","All Telangana"];
+  if(select&&regions.includes(value)){select.value=value;$("#plan")?.scrollIntoView({behavior:"smooth"});return;}
+  if(["Nature","Culture","Heritage"].includes(value)){$("#category").value=value;$("#search").value="";if($("#district"))$("#district").value="all";$("#explore")?.scrollIntoView({behavior:"smooth"});renderPlaces();}
+};
 init();

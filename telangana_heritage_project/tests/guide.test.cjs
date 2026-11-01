@@ -25,6 +25,8 @@ test("guide search retrieves a known destination with authoritative references",
   assert.equal(response.body.generativeAI, false);
   assert.equal(response.body.count, 1);
   assert.equal(response.body.data[0].slug, "ramappa-temple");
+  assert.equal(response.body.data[0].imageUrl, destinations.find(item => item.slug === "ramappa-temple").imageUrl);
+  assert.equal(response.body.data[0].imageSourceUrl, destinations.find(item => item.slug === "ramappa-temple").imageSourceUrl);
   assert.equal(response.body.data[0].officialSourceUrl, destinations.find(item => item.slug === "ramappa-temple").officialSourceUrl);
   assert.match(response.body.data[0].officialSourceUrl, /^https:\/\//);
   assert.match(response.body.data[0].coordinateSourceUrl, /^https:\/\//);
